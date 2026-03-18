@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)file:///C:/Users/RNarine/Downloads/index%20(2).html -->
+<!-- saved from url=(0051)file:///C:/Users/RNarine/Downloads/index%20(3).html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1931,14 +1931,14 @@ function injectEmails(newEmails) {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  SUPABASE CONFIG — paste your keys here
+//  SUPABASE CONFIG
 // ═══════════════════════════════════════════════════════════
 const SUPABASE_URL  = 'https://ihekahzdrfgtgxzmxibf.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZWthaHpkcmZndGd4em14aWJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NjA0MDIsImV4cCI6MjA4OTQzNjQwMn0.PwMrafqFDfH8xlpcyYS48g_l2OUa-SG0MtFfx8gIGHc';
-const TABLE         = 'Portal Support Emails';
+const TABLE         = 'Portal%20Support%20Emails';
 
 // ═══════════════════════════════════════════════════════════
-//  FETCH FROM SUPABASE
+//  FETCH FROM SUPABASE (every 30 seconds)
 // ═══════════════════════════════════════════════════════════
 async function fetchFromSupabase() {
   try {
@@ -1952,10 +1952,10 @@ async function fetchFromSupabase() {
         }
       }
     );
-    if (!res.ok) { console.error('Supabase fetch error:', res.status); return; }
+    if (!res.ok) { console.error('Supabase error:', res.status, await res.text()); return; }
     const rows = await res.json();
     if (rows.length > 0) {
-      const normalized = rows.map(r => ({
+      emails = rows.map(r => ({
         message_id:         r.message_id,
         conversation_id:    r.conversation_id || '',
         subject:            r.subject || '(No Subject)',
@@ -1977,8 +1977,6 @@ async function fetchFromSupabase() {
         web_link:           '#',
         last_updated:       r.created_at || new Date().toISOString()
       }));
-      // Replace all emails with fresh data from Supabase
-      emails = normalized;
       render();
     }
   } catch(e) {
