@@ -1551,27 +1551,27 @@ async function fetchFromSupabase() {
     if (!newRows.length) return;
 
     const newEmails = newRows.map(r => ({
-      message_id:         r.message_id,
-      conversation_id:    r.conversation_id || '',
-      subject:            r.subject || '(No Subject)',
-      sender:             r.sender || 'Unknown',
-      to:                 r.recipient ? [r.recipient] : [],
-      cc:                 r.recipient2 ? [r.recipient2] : [],
-      body_preview:       (r.main_message || '').slice(0, 300),
-      full_body:          r.main_message || '',
-      triageStatus:       r.triage_status || 'unread',
-      priority:           normalizePriorityStr(r.priority),
-      company:            '',
-      suggested_action:   r.suggested_action || '',
-      assigned_to:        r.assigned_to || '',
-      tags:               [],
-      audit_log:          [],
-      received_date_time: r.created_at || new Date().toISOString(),
-      has_attachments:    false,
-      is_read:            r.triage_status !== 'unread',
-      web_link:           r.weblink || r.web_link || r.link_to_email || r['Link to Email'] || '#',
-      last_updated:       r.created_at || new Date().toISOString()
-    }));
+  message_id:         r.message_id,
+  conversation_id:    r.conversation_id || '',
+  subject:            r.subject || '(No Subject)',
+  sender:             r.sender || 'Unknown',
+  to:                 r.recipient ? [r.recipient] : [],
+  cc:                 r.recipient2 ? [r.recipient2] : [],
+  body_preview:       (r.main_message || '').slice(0, 300),
+  full_body:          r.main_message || '',
+  triageStatus:       r.triage_status || 'unread',
+  priority:           normalizePriorityStr(r.priority),
+  company:            '',
+  suggested_action:   r.suggested_action || '',
+  assigned_to:        r.assigned_to || '',
+  tags:               [],
+  audit_log:          [],
+  received_date_time: r.created_at || new Date().toISOString(),
+  has_attachments:    false,
+  is_read:            r.triage_status !== 'unread',
+  web_link:           r.weblink || r['Link to Email'] || r.web_link || r.link_to_email || '#',
+  last_updated:       r.created_at || new Date().toISOString()
+}));
 
     const merged = [...emails, ...newEmails];
     const finalMap = new Map();
