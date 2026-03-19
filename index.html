@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0045)file:///C:/Users/RNarine/Downloads/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal Support Triage — CreditRiskMonitor</title>
 <style>
@@ -401,7 +403,8 @@ kbd {
   .k-col { min-width: 200px; }
 }
 </style>
-<style type="text/css" id="operaUserStyle"></style></head>
+<style type="text/css" id="operaUserStyle"></style>
+</head>
 <body>
 <div id="app">
   <div id="toasts"></div>
@@ -417,7 +420,7 @@ kbd {
       <div class="hdr-section">Portal Support Triage</div>
     </div>
     <div class="hdr-right">
-      <label class="toggle-wrap"><input type="checkbox" id="dryRun" checked=""> Dry Run</label>
+      <label class="toggle-wrap"><input type="checkbox" id="dryRun" checked> Dry Run</label>
       <label class="toggle-wrap"><input type="checkbox" id="syncOutlook"> Sync Outlook</label>
       <select class="role-sel" id="roleSelect">
         <option value="Manager">Manager</option>
@@ -430,23 +433,23 @@ kbd {
   <!-- ── Toolbar ────────────────────────────────────────── -->
   <div class="tbar">
     <div class="nav-grp">
-      <button class="nav-btn active" data-view="inbox" onclick="switchView(&#39;inbox&#39;)">
+      <button class="nav-btn active" data-view="inbox" onclick="switchView('inbox')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><circle cx="3.5" cy="6" r="1.5" fill="currentColor"></circle><circle cx="3.5" cy="12" r="1.5" fill="currentColor"></circle><circle cx="3.5" cy="18" r="1.5" fill="currentColor"></circle></svg>
         Inbox
       </button>
-      <button class="nav-btn" data-view="threads" onclick="switchView(&#39;threads&#39;)">
+      <button class="nav-btn" data-view="threads" onclick="switchView('threads')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
         Threads
       </button>
-      <button class="nav-btn" data-view="kanban" onclick="switchView(&#39;kanban&#39;)">
+      <button class="nav-btn" data-view="kanban" onclick="switchView('kanban')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
         Kanban
       </button>
-      <button class="nav-btn" data-view="queue" onclick="switchView(&#39;queue&#39;)">
+      <button class="nav-btn" data-view="queue" onclick="switchView('queue')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
         Work Queue
       </button>
-      <button class="nav-btn" data-view="analytics" onclick="switchView(&#39;analytics&#39;)">
+      <button class="nav-btn" data-view="analytics" onclick="switchView('analytics')">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
         Analytics
       </button>
@@ -457,13 +460,13 @@ kbd {
       <input class="search-inp" id="searchInput" placeholder="Subject, sender, recipient, body…" oninput="render()">
     </div>
     <select class="flt-sel" id="fltAssigned" onchange="render()"><option value="">All Assignees</option></select>
-    <button class="pf-btn" id="pfUnread" onclick="toggleTF(&#39;unread&#39;)">Unread</button>
-    <button class="pf-btn" id="pfOpen" onclick="toggleTF(&#39;open&#39;)">Open</button>
-    <button class="pf-btn" id="pfResolved" onclick="toggleTF(&#39;resolved&#39;)">Resolved</button>
+    <button class="pf-btn" id="pfUnread" onclick="toggleTF('unread')">Unread</button>
+    <button class="pf-btn" id="pfOpen" onclick="toggleTF('open')">Open</button>
+    <button class="pf-btn" id="pfResolved" onclick="toggleTF('resolved')">Resolved</button>
     <div class="tbar-div"></div>
-    <button class="pf-btn" id="pfHigh" onclick="togglePF(&#39;High&#39;)">High</button>
-    <button class="pf-btn" id="pfMedium" onclick="togglePF(&#39;Medium&#39;)">Medium</button>
-    <button class="pf-btn" id="pfLow" onclick="togglePF(&#39;Low&#39;)">Low</button>
+    <button class="pf-btn" id="pfHigh" onclick="togglePF('High')">High</button>
+    <button class="pf-btn" id="pfMedium" onclick="togglePF('Medium')">Medium</button>
+    <button class="pf-btn" id="pfLow" onclick="togglePF('Low')">Low</button>
     <div class="tbar-info" id="tbarInfo">0 emails · <kbd>i</kbd> Inbox <kbd>t</kbd> Threads <kbd>k</kbd> Kanban</div>
     <div class="tbar-div"></div>
     <button class="btn btn-ghost btn-sm" id="btnWebhook" onclick="openWebhookPanel()" style="gap:5px">
@@ -486,14 +489,14 @@ kbd {
     <th style="min-width:100px">Message ID</th>
     <th style="width:80px">Priority</th>
     <th style="width:90px">Conversation ID</th>
-    <th class="sortable" onclick="setSort(&#39;sender&#39;)" style="min-width:140px">Sender</th>
+    <th class="sortable" onclick="setSort('sender')" style="min-width:140px">Sender</th>
     <th style="min-width:220px">Recipients (To + CC)</th>
-    <th class="sortable" onclick="setSort(&#39;subject&#39;)" style="min-width:250px">Subject</th>
+    <th class="sortable" onclick="setSort('subject')" style="min-width:250px">Subject</th>
     <th style="min-width:200px">Body</th>
     <th style="width:26px" title="Attachments">📎</th>
     <th style="min-width:120px">Assigned</th>
-    <th class="sortable" onclick="setSort(&#39;triage&#39;)" style="width:100px">Status</th>
-    <th class="sortable" onclick="setSort(&#39;date&#39;)" style="width:110px">Received ↓</th>
+    <th class="sortable" onclick="setSort('triage')" style="width:100px">Status</th>
+    <th class="sortable" onclick="setSort('date')" style="width:110px">Received ↓</th>
     <th style="min-width:110px">Date Resolved</th>
   </tr></thead><tbody><tr><td colspan="13" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr></tbody></table></div></div>
 </div>
@@ -502,8 +505,8 @@ kbd {
 <div class="modal-wrap" id="webhookPanel">
   <div class="modal" style="width:600px;max-width:96vw;max-height:90vh;overflow-y:auto">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-      <div class="modal-title" style="margin:0">Webhook Setup &amp; Test</div>
-      <button class="sp-close" onclick="closeModal(&#39;webhookPanel&#39;)" style="margin-left:8px">
+      <div class="modal-title" style="margin:0">Webhook Setup & Test</div>
+      <button class="sp-close" onclick="closeModal('webhookPanel')" style="margin-left:8px">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
@@ -519,8 +522,8 @@ kbd {
     <label class="modal-label" style="margin-bottom:10px;display:block">Add Test Email Manually</label>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
       <div><label class="modal-label">Sender *</label><input class="modal-sel" id="tSender" placeholder="john@example.com"></div>
-      <div><label class="modal-label">Triage Status</label><select class="modal-sel" id="tTriageStatus"><option value="unread" selected="">Unread</option><option value="open">Open</option><option value="resolved">Resolved</option></select></div>
-      <div><label class="modal-label">Priority</label><select class="modal-sel" id="tPriority"><option value="High">High</option><option value="Medium" selected="">Medium</option><option value="Low">Low</option></select></div>
+      <div><label class="modal-label">Triage Status</label><select class="modal-sel" id="tTriageStatus"><option value="unread" selected>Unread</option><option value="open">Open</option><option value="resolved">Resolved</option></select></div>
+      <div><label class="modal-label">Priority</label><select class="modal-sel" id="tPriority"><option value="High">High</option><option value="Medium" selected>Medium</option><option value="Low">Low</option></select></div>
       <div><label class="modal-label">Recipient (To)</label><input class="modal-sel" id="tTo" placeholder="ops@financials"></div>
       <div><label class="modal-label">Recipient 2 (CC)</label><input class="modal-sel" id="tCc" placeholder="triage@financials"></div>
       <div style="grid-column:1/-1"><label class="modal-label">Subject *</label><input class="modal-sel" id="tSubject" placeholder="Re: Financial Statement Upload"></div>
@@ -554,7 +557,7 @@ kbd {
     <label class="modal-label">Note (optional)</label>
     <textarea class="modal-ta" id="assignNote" placeholder="Add a note…"></textarea>
     <div class="modal-foot">
-      <button class="btn btn-ghost" onclick="closeModal(&#39;assignModal&#39;)">Cancel</button>
+      <button class="btn btn-ghost" onclick="closeModal('assignModal')">Cancel</button>
       <button class="btn btn-primary" onclick="confirmAssign()">Assign</button>
     </div>
   </div>
@@ -566,7 +569,7 @@ kbd {
     <label class="modal-label">Reason</label>
     <textarea class="modal-ta" id="priReason" placeholder="Why are you changing triage status?"></textarea>
     <div class="modal-foot">
-      <button class="btn btn-ghost" onclick="closeModal(&#39;priorityModal&#39;)">Cancel</button>
+      <button class="btn btn-ghost" onclick="closeModal('priorityModal')">Cancel</button>
       <button class="btn btn-primary" onclick="confirmPriority()">Set Status</button>
     </div>
   </div>
@@ -583,7 +586,7 @@ let triageFilters   = [];
 let priorityFilters = [];
 let triageTarget    = "";
 let queueSel        = new Set();
-let inboxSel        = new Set();   // ← NEW: bulk select for inbox
+let inboxSel        = new Set();
 let sortCol         = "date";
 let sortDir         = -1;
 
@@ -745,10 +748,8 @@ function render() {
 function toggleInboxCheck(msgId) {
   if (inboxSel.has(msgId)) inboxSel.delete(msgId); else inboxSel.add(msgId);
   updateBulkBar();
-  // Update checkbox visually
   const cb = document.getElementById('icb-'+msgId);
   if (cb) cb.checked = inboxSel.has(msgId);
-  // Update select-all
   const allCb = document.getElementById('inboxSelectAll');
   if (allCb) allCb.checked = inboxSel.size > 0 && inboxSel.size === document.querySelectorAll('.inbox-cb').length;
 }
@@ -1062,20 +1063,25 @@ function qSelectAll(n) {
   updateQSel();
 }
 function updateQSel() {
-  queueSel=new Set();
-  document.querySelectorAll(".q-cb:checked").forEach(c=>queueSel.add(c.dataset.id));
-  const ba=document.getElementById("bulkActions");
-  if(!ba) return;
-  ba.innerHTML=queueSel.size&&role()!=="Viewer"?
-    `<button class="btn btn-success btn-sm" onclick="bulkAction('resolve')">Resolve (${queueSel.size})</button>
-     <button class="btn btn-primary btn-sm" onclick="bulkAction('notify')">Notify (${queueSel.size})</button>`:"";
+  queueSel = new Set();
+  document.querySelectorAll(".q-cb:checked").forEach(c => queueSel.add(c.dataset.id));
+  const ba = document.getElementById("bulkActions");
+  if (!ba) return;
+
+  ba.innerHTML = queueSel.size && role() !== "Viewer"
+    ? `<button class="btn btn-success btn-sm" onclick="bulkAction('resolve')">Resolve (${queueSel.size})</button>`
+    : "";
 }
 function bulkAction(a) {
-  if (role()==="Viewer") { toast("Viewers cannot perform bulk actions","error"); return; }
-  queueSel.forEach(id=>{
-    if(a==="resolve") updateEmail(id,{status:"Resolved"},"bulk_resolve");
-    if(a==="notify")  callWebhook("notify",{message_id:id});
+  if (role() === "Viewer") {
+    toast("Viewers cannot perform bulk actions","error");
+    return;
+  }
+
+  queueSel.forEach(id => {
+    if (a === "resolve") updateEmail(id,{triageStatus:"resolved",status:"Resolved"},"bulk_resolve");
   });
+
   toast(`Bulk ${a}: ${queueSel.size} items`);
 }
 
@@ -1301,7 +1307,7 @@ function openPriModal() {
 }
 function renderPriBtns() {
   document.getElementById("priBtnGrp").innerHTML=[
-    {v:"unread",  label:"Unread",   cls:"btn",          style:"background:#334155;color:#fff;border-color:#334155"},
+    {v:"unread",  label:"Unread",   cls:"btn",           style:"background:#334155;color:#fff;border-color:#334155"},
     {v:"open",    label:"Open",     cls:"btn btn-amber", style:""},
     {v:"resolved",label:"Resolved", cls:"btn btn-success",style:""}
   ].map(({v,label,cls,style})=>{
@@ -1499,42 +1505,101 @@ async function fetchFromSupabase() {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE)}?select=*&order=created_at.desc`,
-      { headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}`, 'Content-Type': 'application/json' } }
+      {
+        headers: {
+          'apikey': SUPABASE_ANON,
+          'Authorization': `Bearer ${SUPABASE_ANON}`,
+          'Content-Type': 'application/json'
+        }
+      }
     );
-    if (!res.ok) { console.error('Supabase fetch error:', res.status, await res.text()); return; }
-    const rows = await res.json();
-    if (rows.length > 0) {
-      emails = rows.map(r => ({
-        message_id:         r.message_id,
-        conversation_id:    r.conversation_id || '',
-        subject:            r.subject || '(No Subject)',
-        sender:             r.sender || 'Unknown',
-        to:                 r.recipient ? [r.recipient] : [],
-        cc:                 r.recipient2 ? [r.recipient2] : [],
-        body_preview:       (r.main_message || '').slice(0, 300),
-        full_body:          r.main_message || '',
-        triageStatus:       r.triage_status || 'unread',
-        priority:           normalizePriorityStr(r.priority),
-        company:            '',
-        suggested_action:   r.suggested_action || '',
-        assigned_to:        r.assigned_to || '',
-        tags:               [],
-        audit_log:          [],
-        received_date_time: r.created_at || new Date().toISOString(),
-        has_attachments:    false,
-        is_read:            r.triage_status !== 'unread',
-        web_link:           '#',
-        last_updated:       r.created_at || new Date().toISOString()
-      }));
-      render();
+
+    if (!res.ok) {
+      console.error('Supabase fetch error:', res.status, await res.text());
+      return;
     }
-  } catch(e) { console.error('Supabase fetch error:', e); }
+
+    const rows = await res.json();
+    if (!Array.isArray(rows) || !rows.length) return;
+
+    const existingIds = new Set(
+      emails
+        .map(e => String(e.message_id || '').trim())
+        .filter(Boolean)
+    );
+
+    const latestRowByMessageId = new Map();
+
+    for (const r of rows) {
+      const id = String(r.message_id || '').trim();
+      if (!id) continue;
+
+      const existing = latestRowByMessageId.get(id);
+      const currentTs = new Date(r.created_at || 0).getTime();
+      const existingTs = existing ? new Date(existing.created_at || 0).getTime() : -Infinity;
+
+      if (!existing || currentTs >= existingTs) {
+        latestRowByMessageId.set(id, r);
+      }
+    }
+
+    const newRows = Array.from(latestRowByMessageId.values()).filter(r => {
+      const id = String(r.message_id || '').trim();
+      return id && !existingIds.has(id);
+    });
+
+    if (!newRows.length) return;
+
+    const newEmails = newRows.map(r => ({
+  message_id:         r.message_id,
+  conversation_id:    r.conversation_id || '',
+  subject:            r.subject || '(No Subject)',
+  sender:             r.sender || 'Unknown',
+  to:                 r.recipient ? [r.recipient] : [],
+  cc:                 r.recipient2 ? [r.recipient2] : [],
+  body_preview:       (r.main_message || '').slice(0, 300),
+  full_body:          r.main_message || '',
+  triageStatus:       r.triage_status || 'unread',
+  priority:           normalizePriorityStr(r.priority),
+  company:            '',
+  suggested_action:   r.suggested_action || '',
+  assigned_to:        r.assigned_to || '',
+  tags:               [],
+  audit_log:          [],
+  received_date_time: r.created_at || new Date().toISOString(),
+  has_attachments:    false,
+  is_read:            r.triage_status !== 'unread',
+  web_link:           r.weblink || r['Link to Email'] || r.web_link || r.link_to_email || '#',
+  last_updated:       r.created_at || new Date().toISOString()
+}));
+
+    const merged = [...emails, ...newEmails];
+    const finalMap = new Map();
+
+    for (const e of merged) {
+      const id = String(e.message_id || '').trim();
+      if (!id) continue;
+      if (!finalMap.has(id)) {
+        finalMap.set(id, e);
+      }
+    }
+
+    emails = Array.from(finalMap.values()).sort(
+      (a, b) => new Date(b.received_date_time) - new Date(a.received_date_time)
+    );
+
+    render();
+    toast(`${newEmails.length} new email${newEmails.length > 1 ? 's' : ''} loaded`, "info");
+  } catch(e) {
+    console.error('Supabase fetch error:', e);
+  }
 }
 
 // ── INIT ──────────────────────────────────────────────────
 render();
 fetchFromSupabase();
-setInterval(fetchFromSupabase, 3600000); // 1 hour
+setInterval(fetchFromSupabase, 300000); // 5 minutes
 </script>
 
-</body></html>
+</body>
+</html>
