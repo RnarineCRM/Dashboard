@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)file:///C:/Users/RNarine/Downloads/index%20(3).html -->
+<!-- saved from url=(0045)file:///C:/Users/RNarine/Downloads/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portal Support Triage — CreditRiskMonitor</title>
 <style>
@@ -10,43 +9,33 @@
 
 /* ── CRM-Inspired Token System ───────────────────────────── */
 :root {
-  /* Surfaces */
   --bg:        #eef1f5;
   --surface:   #ffffff;
   --card:      #ffffff;
   --elevated:  #f5f7fa;
   --hover:     #fff0f0;
-  /* Borders */
   --b0:        #e2e2e2;
   --b1:        #cccccc;
   --b2:        #aaaaaa;
-  /* Text */
   --t0:        #1a1a1a;
   --t1:        #444444;
   --t2:        #777777;
   --t3:        #aaaaaa;
-  /* CRM Red — primary brand */
   --red:       #c00000;
   --red-hover: #a00000;
   --red-dim:   rgba(192,0,0,.08);
   --red-light: #fff0f0;
-  /* Amber / Medium priority */
   --amber:     #c77000;
   --amber-dim: rgba(199,112,0,.09);
-  /* Green / Low priority */
   --green:     #1a7a1a;
   --green-dim: rgba(26,122,26,.09);
-  /* Blue / links */
   --blue:      #1a4f9c;
   --blue-dim:  rgba(26,79,156,.09);
-  /* Purple */
   --purple:    #6b21a8;
   --purple-dim:rgba(107,33,168,.09);
-  /* Typography */
   --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --mono: 'Courier New', monospace;
   --r:    6px;
-  /* Dark chrome — matches creditriskmonitor.com header/nav */
   --chrome:        #0c1929;
   --chrome-2:      #102238;
   --chrome-text:   #dce8f2;
@@ -69,206 +58,89 @@ html, body {
 ::-webkit-scrollbar-thumb { background: var(--b1); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--b2); }
 
-/* ── App Shell ───────────────────────────────────────────── */
 #app { display: flex; flex-direction: column; height: 100vh; }
 
-/* ── Red Top Stripe (CRM signature) ─────────────────────── */
-.top-stripe {
-  height: 6px;
-  background: var(--red);
-  flex-shrink: 0;
-}
+.top-stripe { height: 6px; background: var(--red); flex-shrink: 0; }
 
-/* ── Header ──────────────────────────────────────────────── */
 .hdr {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  height: 50px;
-  background: var(--chrome);
-  border-bottom: 2px solid var(--red);
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; height: 50px; background: var(--chrome);
+  border-bottom: 2px solid var(--red); flex-shrink: 0;
 }
 .hdr-left { display: flex; align-items: center; gap: 14px; }
-.crm-logo {
-  display: flex;
-  align-items: baseline;
-  gap: 0;
-  font-size: 18px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  line-height: 1;
-}
+.crm-logo { display: flex; align-items: baseline; gap: 0; font-size: 18px; font-weight: 900; letter-spacing: -0.5px; line-height: 1; }
 .crm-logo .word1 { color: var(--chrome-text); }
 .crm-logo .word2 { color: var(--red); }
 .crm-logo .word3 { color: var(--chrome-text); }
 .hdr-divider { width: 1px; height: 26px; background: var(--chrome-border); }
-.hdr-section {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--chrome-muted);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
+.hdr-section { font-size: 11px; font-weight: 600; color: var(--chrome-muted); letter-spacing: 0.5px; text-transform: uppercase; }
 .hdr-right { display: flex; align-items: center; gap: 14px; }
-.toggle-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--chrome-muted);
-  cursor: pointer;
-  user-select: none;
-}
+.toggle-wrap { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--chrome-muted); cursor: pointer; user-select: none; }
 .toggle-wrap input[type=checkbox] {
-  appearance: none;
-  width: 28px; height: 16px;
-  border-radius: 8px;
-  background: rgba(255,255,255,.2);
-  border: 1px solid rgba(255,255,255,.2);
-  position: relative;
-  cursor: pointer;
-  transition: background .2s;
+  appearance: none; width: 28px; height: 16px; border-radius: 8px;
+  background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.2);
+  position: relative; cursor: pointer; transition: background .2s;
 }
 .toggle-wrap input[type=checkbox]::after {
-  content: '';
-  position: absolute;
-  top: 2px; left: 2px;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: #fff;
-  transition: left .2s;
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 10px; height: 10px; border-radius: 50%; background: #fff; transition: left .2s;
 }
 .toggle-wrap input[type=checkbox]:checked { background: var(--red); border-color: var(--red); }
 .toggle-wrap input[type=checkbox]:checked::after { left: 14px; }
 .role-sel {
-  padding: 4px 8px;
-  border-radius: var(--r);
-  border: 1px solid var(--chrome-border);
-  background: var(--chrome-hover);
-  color: var(--chrome-text);
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
+  padding: 4px 8px; border-radius: var(--r); border: 1px solid var(--chrome-border);
+  background: var(--chrome-hover); color: var(--chrome-text); font-size: 11px; font-weight: 600; cursor: pointer; outline: none;
 }
 .role-sel:focus { border-color: var(--red); }
 
-/* ── Toolbar ─────────────────────────────────────────────── */
 .tbar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 20px;
-  background: var(--chrome-2);
-  border-bottom: 1px solid var(--chrome-border);
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  box-shadow: 0 1px 6px rgba(0,0,0,.25);
+  display: flex; align-items: center; gap: 7px; padding: 7px 20px;
+  background: var(--chrome-2); border-bottom: 1px solid var(--chrome-border);
+  flex-shrink: 0; flex-wrap: wrap; box-shadow: 0 1px 6px rgba(0,0,0,.25);
 }
-.nav-grp {
-  display: flex;
-  gap: 1px;
-  border: 1px solid var(--chrome-border);
-  border-radius: var(--r);
-  overflow: hidden;
-  background: rgba(0,0,0,.25);
-}
+.nav-grp { display: flex; gap: 1px; border: 1px solid var(--chrome-border); border-radius: var(--r); overflow: hidden; background: rgba(0,0,0,.25); }
 .nav-btn {
-  padding: 5px 13px;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(220,232,242,.65);
-  background: transparent;
-  transition: all .12s;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  white-space: nowrap;
+  padding: 5px 13px; border: none; cursor: pointer; font-family: var(--font);
+  font-size: 12px; font-weight: 600; color: rgba(220,232,242,.65); background: transparent;
+  transition: all .12s; display: flex; align-items: center; gap: 5px; white-space: nowrap;
 }
 .nav-btn:hover { background: var(--chrome-hover); color: var(--chrome-text); }
 .nav-btn.active { background: var(--red); color: #fff; }
 .tbar-div { width: 1px; height: 22px; background: var(--chrome-border); }
 .search-box {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 9px;
-  border-radius: var(--r);
-  border: 1px solid var(--chrome-border);
-  background: rgba(255,255,255,.07);
-  transition: border-color .15s;
+  display: flex; align-items: center; gap: 6px; padding: 5px 9px;
+  border-radius: var(--r); border: 1px solid var(--chrome-border);
+  background: rgba(255,255,255,.07); transition: border-color .15s;
 }
 .search-box:focus-within { border-color: var(--red); outline: none; }
 .search-box svg { flex-shrink: 0; color: var(--chrome-muted); }
 .search-inp {
-  border: none;
-  background: transparent;
-  color: var(--chrome-text);
-  font-family: var(--font);
-  font-size: 12px;
-  width: 180px;
-  outline: none;
+  border: none; background: transparent; color: var(--chrome-text);
+  font-family: var(--font); font-size: 12px; width: 180px; outline: none;
 }
 .search-inp::placeholder { color: var(--chrome-muted); }
 .flt-sel {
-  padding: 4px 8px;
-  border-radius: var(--r);
-  border: 1px solid var(--chrome-border);
-  background: rgba(255,255,255,.07);
-  color: var(--chrome-text);
-  font-family: var(--font);
-  font-size: 11px;
-  cursor: pointer;
-  outline: none;
+  padding: 4px 8px; border-radius: var(--r); border: 1px solid var(--chrome-border);
+  background: rgba(255,255,255,.07); color: var(--chrome-text);
+  font-family: var(--font); font-size: 11px; cursor: pointer; outline: none;
 }
 .flt-sel:focus { border-color: var(--red); }
 .pf-btn {
-  padding: 3px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--chrome-border);
-  background: rgba(255,255,255,.06);
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .12s;
-  color: rgba(220,232,242,.6);
+  padding: 3px 10px; border-radius: 20px; border: 1px solid var(--chrome-border);
+  background: rgba(255,255,255,.06); font-family: var(--font); font-size: 11px;
+  font-weight: 600; cursor: pointer; transition: all .12s; color: rgba(220,232,242,.6);
 }
-/* triage filter pill active states defined near pill classes */
 .tbar-info { margin-left: auto; font-size: 11px; color: var(--chrome-muted); white-space: nowrap; }
-/* Webhook ghost button override for dark toolbar */
 .tbar .btn-ghost { background: rgba(255,255,255,.07); color: var(--chrome-text); border-color: var(--chrome-border); }
 .tbar .btn-ghost:hover { background: rgba(255,255,255,.13); }
 kbd {
-  padding: 1px 5px;
-  border-radius: 3px;
-  background: rgba(0,0,0,.3);
-  border: 1px solid var(--chrome-border);
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--chrome-muted);
+  padding: 1px 5px; border-radius: 3px; background: rgba(0,0,0,.3);
+  border: 1px solid var(--chrome-border); font-family: var(--mono); font-size: 10px; color: var(--chrome-muted);
 }
 
-/* ── Main ─────────────────────────────────────────────────── */
 .main { flex: 1; overflow-y: auto; overflow-x: auto; position: relative; background: var(--bg); min-height: 0; }
 
-/* ── Triage Status Pill ───────────────────────────────────── */
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 9px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .2px;
-  white-space: nowrap;
-}
+.pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .2px; white-space: nowrap; }
 .pill-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
 .pill-unread   { color: #fff; background: #334155; }
 .pill-unread .pill-dot   { background: rgba(255,255,255,.7); }
@@ -276,135 +148,47 @@ kbd {
 .pill-open .pill-dot     { background: rgba(255,255,255,.7); }
 .pill-resolved { color: var(--green); background: var(--green-dim); border: 1px solid var(--green); }
 .pill-resolved .pill-dot { background: var(--green); }
-/* Triage filter active states */
 .pf-unread    { background: #334155;           color: #fff;            border-color: #334155; }
 .pf-open-ts   { background: var(--amber-dim);  color: var(--amber);    border-color: var(--amber); }
 .pf-resolved  { background: var(--green-dim);  color: var(--green);    border-color: var(--green); }
-/* Priority pills */
 .pill.ph { background: var(--red);       color: #fff; }
 .pill.pm { background: var(--amber);     color: #fff; }
 .pill.pl { background: var(--green-dim); color: var(--green); border: 1px solid var(--green); }
-/* Priority filter active states */
 .pf-high   { background: var(--red-dim);   color: var(--red);   border-color: var(--red); }
 .pf-medium { background: var(--amber-dim); color: var(--amber); border-color: var(--amber); }
 .pf-low    { background: var(--green-dim); color: var(--green); border-color: var(--green); }
 
-/* ── Status Badge ─────────────────────────────────────────── */
-.sbadge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .3px;
-  text-transform: uppercase;
-}
+.sbadge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; }
 .sOpen      { color: var(--blue);   background: var(--blue-dim);   border: 1px solid rgba(26,79,156,.2); }
 .sEscalated { color: var(--red);    background: var(--red-dim);    border: 1px solid rgba(192,0,0,.2); }
 .sResolved  { color: var(--green);  background: var(--green-dim);  border: 1px solid rgba(26,122,26,.2); }
 
-/* ── Small chips ──────────────────────────────────────────── */
-.chip {
-  display: inline-block;
-  padding: 1px 6px;
-  border-radius: 3px;
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--t2);
-  background: var(--elevated);
-  border: 1px solid var(--b0);
-}
-.conv-chip {
-  font-family: var(--mono);
-  font-size: 10px;
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: var(--elevated);
-  color: var(--t2);
-  border: 1px solid var(--b0);
-  white-space: nowrap;
-  display: inline-block;
-  max-width: 110px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  cursor: default;
-}
-/* Recipient chips */
+.chip { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 500; color: var(--t2); background: var(--elevated); border: 1px solid var(--b0); }
+.conv-chip { font-family: var(--mono); font-size: 10px; padding: 1px 6px; border-radius: 3px; background: var(--elevated); color: var(--t2); border: 1px solid var(--b0); white-space: nowrap; display: inline-block; max-width: 110px; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; cursor: default; }
 .rcpt-list { display: flex; flex-wrap: wrap; gap: 2px; }
-.rcpt-chip {
-  display: inline-block;
-  padding: 1px 6px;
-  border-radius: 3px;
-  font-size: 10px;
-  background: var(--blue-dim);
-  color: var(--blue);
-  border: 1px solid rgba(26,79,156,.18);
-  word-break: break-all;
-}
-.cc-chip {
-  display: inline-block;
-  padding: 1px 6px;
-  border-radius: 3px;
-  font-size: 10px;
-  background: var(--purple-dim);
-  color: var(--purple);
-  border: 1px solid rgba(107,33,168,.18);
-  word-break: break-all;
-}
+.rcpt-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(26,79,156,.18); word-break: break-all; }
+.cc-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(107,33,168,.18); word-break: break-all; }
 
-/* ── Table ────────────────────────────────────────────────── */
 .tbl-wrap { }
 .tbl { width: 100%; border-collapse: collapse; }
 .tbl th {
-  padding: 8px 10px;
-  text-align: left;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  color: var(--t2);
-  background: var(--elevated);
-  border-bottom: 2px solid var(--b0);
-  border-right: 1px solid var(--b0);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  white-space: nowrap;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  padding: 8px 10px; text-align: left; font-size: 11px; font-weight: 800;
+  letter-spacing: .5px; text-transform: uppercase; color: var(--t2);
+  background: var(--elevated); border-bottom: 2px solid var(--b0);
+  border-right: 1px solid var(--b0); position: sticky; top: 0; z-index: 20;
+  white-space: nowrap; box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 .tbl th:last-child { border-right: none; }
 .tbl th.sortable { cursor: pointer; user-select: none; }
 .tbl th.sortable:hover { background: var(--red-light); color: var(--red); }
-.tbl td {
-  padding: 8px 10px;
-  border-bottom: 1px solid var(--b0);
-  border-right: 1px solid var(--b0);
-  vertical-align: top;
-}
+.tbl td { padding: 8px 10px; border-bottom: 1px solid var(--b0); border-right: 1px solid var(--b0); vertical-align: top; }
 .tbl td:last-child { border-right: none; }
 .tbl tbody tr { cursor: pointer; transition: background .1s; }
 .tbl tbody tr:hover { background: var(--hover); }
 .tbl tbody tr.selected { background: var(--red-light); }
-/* Subject+body cell */
 .subj-cell { min-width: 250px; }
-.subj-text {
-  font-weight: 500;
-  font-size: 13px;
-  color: var(--t0);
-  white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-.body-text {
-  font-size: 11px;
-  color: var(--t2);
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-height: 120px;
-  overflow-y: auto;
-  margin-top: 2px;
-}
+.subj-text { font-weight: 500; font-size: 13px; color: var(--t0); white-space: normal; word-wrap: break-word; overflow-wrap: break-word; }
+.body-text { font-size: 11px; color: var(--t2); white-space: pre-wrap; word-wrap: break-word; max-height: 120px; overflow-y: auto; margin-top: 2px; }
 .unread .subj-text { font-weight: 700; color: #000; }
 .unread .body-text { color: var(--t1); }
 .col-from { min-width: 140px; max-width: 180px; }
@@ -415,52 +199,19 @@ kbd {
 .col-date  { font-size: 11px; color: var(--t1); white-space: nowrap; }
 .col-score { font-family: var(--mono); font-weight: 700; font-size: 13px; }
 .col-conv  { font-family: var(--mono); font-size: 10px; color: var(--t2); white-space: nowrap; }
-.thread-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--red);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
-  margin-left: 4px;
-  vertical-align: middle;
-}
+.thread-count { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; background: var(--red); color: #fff; font-size: 9px; font-weight: 700; margin-left: 4px; vertical-align: middle; }
 .attach-ico { color: var(--amber); vertical-align: middle; }
 
-/* ── Editable Assignee ────────────────────────────────────── */
 .assign-cell { cursor: pointer; min-width: 110px; }
 .assign-cell:hover .assign-edit-ico { opacity: 1; }
 .assign-edit-ico { opacity: 0; transition: opacity .15s; color: var(--t3); font-size: 10px; margin-left: 4px; }
-.assign-inp {
-  width: 100%;
-  border: none;
-  border-bottom: 1.5px solid var(--red);
-  outline: none;
-  background: transparent;
-  font-size: 12px;
-  font-family: var(--font);
-  color: var(--t0);
-  padding: 1px 2px;
-}
+.assign-inp { width: 100%; border: none; border-bottom: 1.5px solid var(--red); outline: none; background: transparent; font-size: 12px; font-family: var(--font); color: var(--t0); padding: 1px 2px; }
 
-/* ── Buttons ──────────────────────────────────────────────── */
 .btn {
-  padding: 5px 12px;
-  border-radius: var(--r);
-  border: 1px solid transparent;
-  cursor: pointer;
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: all .12s;
-  white-space: nowrap;
-  letter-spacing: .2px;
+  padding: 5px 12px; border-radius: var(--r); border: 1px solid transparent;
+  cursor: pointer; font-family: var(--font); font-size: 11px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 4px; transition: all .12s;
+  white-space: nowrap; letter-spacing: .2px;
 }
 .btn:active { transform: scale(.97); }
 .btn-primary { background: var(--red);    color: #fff; border-color: var(--red); }
@@ -476,90 +227,57 @@ kbd {
 .btn-ghost:hover { background: var(--elevated); }
 .btn-sm { padding: 3px 9px; font-size: 11px; }
 
-/* ── Side Panel ───────────────────────────────────────────── */
+/* ── Bulk Delete Bar ──────────────────────────────────────── */
+.bulk-bar {
+  display: none; align-items: center; gap: 10px; padding: 7px 20px;
+  background: var(--red-dim); border-bottom: 1px solid rgba(192,0,0,.2);
+  font-size: 12px; font-weight: 600; color: var(--red);
+}
+.bulk-bar.on { display: flex; }
+.bulk-bar .bulk-count { font-family: var(--mono); }
+
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.3); z-index: 200; opacity: 0; transition: opacity .2s; pointer-events: none; }
 .overlay.on { opacity: 1; pointer-events: auto; }
 .side-panel {
-  position: fixed;
-  top: 0; right: -600px;
-  width: 580px;
-  height: 100vh;
-  background: var(--surface);
-  border-left: 1px solid var(--b0);
-  box-shadow: -4px 0 24px rgba(0,0,0,.12);
-  z-index: 300;
-  display: flex;
-  flex-direction: column;
-  transition: right .25s cubic-bezier(.4,0,.2,1);
+  position: fixed; top: 0; right: -600px; width: 580px; height: 100vh;
+  background: var(--surface); border-left: 1px solid var(--b0);
+  box-shadow: -4px 0 24px rgba(0,0,0,.12); z-index: 300;
+  display: flex; flex-direction: column; transition: right .25s cubic-bezier(.4,0,.2,1);
 }
 .side-panel.open { right: 0; }
 .sp-stripe { height: 4px; background: var(--red); flex-shrink: 0; }
 .sp-head {
-  padding: 14px 18px;
-  border-bottom: 1px solid var(--b0);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  flex-shrink: 0;
-  background: var(--surface);
+  padding: 14px 18px; border-bottom: 1px solid var(--b0);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 12px; flex-shrink: 0; background: var(--surface);
 }
 .sp-subject { font-size: 14px; font-weight: 700; line-height: 1.35; margin-bottom: 7px; color: var(--t0); }
 .sp-meta-row { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-.sp-score { font-family: var(--mono); font-size: 12px; color: var(--t1); }
 .sp-close { background: none; border: none; color: var(--t2); cursor: pointer; padding: 3px; border-radius: 3px; transition: all .12s; flex-shrink: 0; }
 .sp-close:hover { color: var(--red); background: var(--red-light); }
 .sp-body { flex: 1; overflow-y: auto; padding: 16px 18px; }
 
-/* Priority override select (in panel meta-grid) */
-.pri-sel {
-  padding: 2px 8px;
-  border-radius: 4px;
-  border: 1px solid var(--b1);
-  background: var(--surface);
-  color: var(--t0);
-  font-family: var(--font);
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-}
+.pri-sel { padding: 2px 8px; border-radius: 4px; border: 1px solid var(--b1); background: var(--surface); color: var(--t0); font-family: var(--font); font-size: 11px; font-weight: 600; cursor: pointer; outline: none; }
 .pri-sel:focus { border-color: var(--red); }
 
-/* Panel save form */
 .sp-save-form { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--b0); }
 .sp-save-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 .sp-save-field { display: flex; flex-direction: column; gap: 3px; }
 .sp-save-label { font-size: 10px; font-weight: 700; color: var(--t2); text-transform: uppercase; letter-spacing: .4px; }
 .sp-save-sel, .sp-save-note {
-  padding: 5px 8px;
-  border-radius: 4px;
-  border: 1px solid var(--b1);
-  background: var(--surface);
-  color: var(--t0);
-  font-family: var(--font);
-  font-size: 12px;
-  outline: none;
+  padding: 5px 8px; border-radius: 4px; border: 1px solid var(--b1);
+  background: var(--surface); color: var(--t0); font-family: var(--font); font-size: 12px; outline: none;
 }
 .sp-save-sel:focus, .sp-save-note:focus { border-color: var(--red); }
 .sp-save-note { resize: vertical; min-height: 52px; width: 100%; box-sizing: border-box; }
 .btn-sp-save {
-  width: 100%;
-  padding: 7px;
-  border-radius: 5px;
-  border: none;
-  background: var(--blue);
-  color: #fff;
-  font-family: var(--font);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .15s;
+  width: 100%; padding: 7px; border-radius: 5px; border: none; background: var(--blue);
+  color: #fff; font-family: var(--font); font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: background .15s;
 }
 .btn-sp-save:hover { background: var(--blue-hover, #1a3f7a); }
 .btn-sp-save.saved { background: var(--green); }
 
-/* Meta grid inside panel */
 .meta-grid { display: grid; grid-template-columns: 80px 1fr; gap: 4px 10px; font-size: 12px; margin-bottom: 14px; background: var(--elevated); border: 1px solid var(--b0); border-radius: var(--r); padding: 10px 12px; }
 .meta-k { color: var(--t2); font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: .4px; align-self: start; padding-top: 2px; }
 .meta-v { color: var(--t0); word-break: break-all; }
@@ -573,7 +291,6 @@ kbd {
 .email-body { background: var(--elevated); border-radius: var(--r); border: 1px solid var(--b0); padding: 11px; font-size: 12px; line-height: 1.7; color: var(--t1); white-space: pre-wrap; overflow-y: auto; margin-bottom: 13px; font-family: Georgia, serif; }
 .sp-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
 
-/* Thread list in panel */
 .thread-item { padding: 8px 10px; border-radius: var(--r); border: 1px solid var(--b0); background: var(--surface); margin-bottom: 4px; cursor: pointer; transition: all .12s; }
 .thread-item:hover { border-color: var(--red); background: var(--red-light); }
 .thread-item.active { border-color: var(--red); background: var(--red-light); border-left: 3px solid var(--red); }
@@ -583,14 +300,12 @@ kbd {
 .thread-preview { font-size: 11px; color: var(--t2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .thread-rcpt { font-size: 10px; color: var(--t3); margin-top: 1px; }
 
-/* Audit */
 .audit-entry { padding: 7px 9px; margin-bottom: 3px; border-radius: var(--r); background: var(--elevated); border: 1px solid var(--b0); font-size: 11px; }
 .audit-head { display: flex; justify-content: space-between; margin-bottom: 1px; }
 .audit-act  { font-weight: 700; color: var(--t0); }
 .audit-time { color: var(--t3); font-family: var(--mono); font-size: 10px; }
 .audit-detail { color: var(--t2); }
 
-/* ── Threads View ─────────────────────────────────────────── */
 .thread-group { border-bottom: 1px solid var(--b0); cursor: pointer; transition: background .1s; background: var(--surface); }
 .thread-group:hover { background: var(--hover); }
 .thread-group-header { display: flex; align-items: center; gap: 9px; padding: 9px 14px; }
@@ -613,7 +328,6 @@ kbd {
 .tm-preview { font-size: 11px; color: var(--t1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tm-date { font-size: 10px; color: var(--t2); white-space: nowrap; margin-left: auto; flex-shrink: 0; }
 
-/* ── Kanban ───────────────────────────────────────────────── */
 .kanban-wrap { display: flex; gap: 14px; padding: 16px 20px; align-items: flex-start; min-height: 100%; }
 .k-col { flex: 1; min-width: 250px; background: var(--surface); border-radius: var(--r); border: 1px solid var(--b0); border-top: 3px solid var(--b1); padding: 12px; }
 .k-col.k-unread   { border-top-color: #334155; }
@@ -638,14 +352,12 @@ kbd {
 .k-card-score  { font-family: var(--mono); font-size: 12px; font-weight: 700; }
 .k-empty       { text-align: center; padding: 20px; color: var(--t3); font-size: 12px; }
 
-/* ── Work Queue ───────────────────────────────────────────── */
 .q-stats  { display: flex; gap: 10px; padding: 14px 20px 10px; flex-wrap: wrap; align-items: center; }
 .q-stat   { padding: 10px 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--b0); border-top: 3px solid var(--red); }
 .q-stat-val   { font-size: 22px; font-weight: 700; font-family: var(--mono); color: var(--red); }
 .q-stat-label { font-size: 10px; color: var(--t2); font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
 .q-bulk { display: flex; gap: 6px; align-items: center; }
 
-/* ── Analytics ────────────────────────────────────────────── */
 .an-grid { display: flex; gap: 10px; padding: 16px 20px 12px; flex-wrap: wrap; }
 .an-kpi  { flex: 1; min-width: 120px; padding: 12px 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--b0); border-top: 3px solid var(--b1); }
 .an-val   { font-size: 26px; font-weight: 700; font-family: var(--mono); }
@@ -656,7 +368,6 @@ kbd {
 .chart-bar   { flex: 1; border-radius: 2px 2px 0 0; min-width: 3px; transition: height .3s; }
 .chart-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--t3); margin-top: 4px; }
 
-/* ── Modal ────────────────────────────────────────────────── */
 .modal-wrap { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 400; display: none; align-items: center; justify-content: center; }
 .modal-wrap.on { display: flex; }
 .modal { background: var(--surface); border-radius: var(--r); border: 1px solid var(--b1); border-top: 3px solid var(--red); padding: 22px; width: 360px; max-width: 92vw; box-shadow: 0 8px 32px rgba(0,0,0,.2); animation: mIn .2s ease; }
@@ -668,7 +379,6 @@ kbd {
 .modal-ta { height: 60px; resize: vertical; }
 .modal-foot { display: flex; gap: 7px; justify-content: flex-end; }
 
-/* ── Toast ────────────────────────────────────────────────── */
 #toasts { position: fixed; top: 14px; right: 14px; z-index: 999; display: flex; flex-direction: column; gap: 7px; }
 .toast { padding: 9px 16px; border-radius: var(--r); font-size: 12px; font-weight: 600; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.25); animation: tIn .25s ease; max-width: 320px; }
 .t-success { background: var(--green); }
@@ -677,15 +387,12 @@ kbd {
 @keyframes tIn { from{transform:translateX(28px);opacity:0} to{transform:translateX(0);opacity:1} }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.75)} }
 
-/* ── Checkbox ─────────────────────────────────────────────── */
-.chk { appearance: none; width: 14px; height: 14px; border: 1.5px solid var(--b1); border-radius: 3px; background: var(--surface); cursor: pointer; position: relative; transition: all .12s; }
+.chk { appearance: none; width: 14px; height: 14px; border: 1.5px solid var(--b1); border-radius: 3px; background: var(--surface); cursor: pointer; position: relative; transition: all .12s; flex-shrink: 0; }
 .chk:checked { background: var(--red); border-color: var(--red); }
 .chk:checked::after { content: '✓'; position: absolute; top: -2px; left: 1px; font-size: 10px; color: #fff; font-weight: 700; }
 
-/* ── Section header for queue/analytics ──────────────────── */
 .panel-wrap { padding: 0 20px 20px; }
 
-/* ── Responsive ───────────────────────────────────────────── */
 @media(max-width:700px){
   .hdr { padding: 0 12px; }
   .tbar { padding: 6px 12px; }
@@ -694,12 +401,10 @@ kbd {
   .k-col { min-width: 200px; }
 }
 </style>
-<style type="text/css" id="operaUserStyle"></style><style type="text/css"></style></head>
+<style type="text/css" id="operaUserStyle"></style></head>
 <body>
 <div id="app">
   <div id="toasts"></div>
-
-  <!-- ── Red top stripe ─────────────────────────────────── -->
   <div class="top-stripe"></div>
 
   <!-- ── Header ─────────────────────────────────────────── -->
@@ -712,7 +417,6 @@ kbd {
       <div class="hdr-section">Portal Support Triage</div>
     </div>
     <div class="hdr-right">
-      <label class="toggle-wrap"><input type="checkbox" id="hideAutoEmails" checked="" onchange="render()"> Hide Auto Emails</label>
       <label class="toggle-wrap"><input type="checkbox" id="dryRun" checked=""> Dry Run</label>
       <label class="toggle-wrap"><input type="checkbox" id="syncOutlook"> Sync Outlook</label>
       <select class="role-sel" id="roleSelect">
@@ -752,7 +456,6 @@ kbd {
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       <input class="search-inp" id="searchInput" placeholder="Subject, sender, recipient, body…" oninput="render()">
     </div>
-    <select class="flt-sel" id="fltCompany" onchange="render()"><option value="">All Companies</option></select>
     <select class="flt-sel" id="fltAssigned" onchange="render()"><option value="">All Assignees</option></select>
     <button class="pf-btn" id="pfUnread" onclick="toggleTF(&#39;unread&#39;)">Unread</button>
     <button class="pf-btn" id="pfOpen" onclick="toggleTF(&#39;open&#39;)">Open</button>
@@ -766,27 +469,33 @@ kbd {
     <button class="btn btn-ghost btn-sm" id="btnWebhook" onclick="openWebhookPanel()" style="gap:5px">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
       Webhook
-      <span class="pulse-dot" id="swDot" style="width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; flex-shrink: 0; animation: 2s ease 0s infinite normal none running pulse;"></span>
+      <span class="pulse-dot" id="swDot" style="width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;flex-shrink:0;animation:pulse 2s infinite"></span>
     </button>
+  </div>
+
+  <!-- ── Bulk Delete Bar ────────────────────────────────── -->
+  <div class="bulk-bar" id="bulkBar">
+    <span class="bulk-count" id="bulkCount">0</span> selected
+    <button class="btn btn-danger btn-sm" onclick="bulkDelete()">🗑 Delete Selected</button>
+    <button class="btn btn-ghost btn-sm" onclick="clearSelection()">Cancel</button>
   </div>
 
   <!-- ── Main ───────────────────────────────────────────── -->
   <div class="main" id="mainContent"><div class="tbl-wrap"><table class="tbl"><thead><tr>
-    <th style="width:36px"></th>
-    <th style="width:28px;text-align:center">#</th>
+    <th style="width:36px;text-align:center"><input type="checkbox" class="chk" id="inboxSelectAll" onclick="toggleInboxSelectAll()"></th>
+    <th style="min-width:100px">Message ID</th>
     <th style="width:80px">Priority</th>
     <th style="width:90px">Conversation ID</th>
     <th class="sortable" onclick="setSort(&#39;sender&#39;)" style="min-width:140px">Sender</th>
     <th style="min-width:220px">Recipients (To + CC)</th>
     <th class="sortable" onclick="setSort(&#39;subject&#39;)" style="min-width:250px">Subject</th>
-    <th style="min-width:100px">Company</th>
     <th style="min-width:200px">Body</th>
     <th style="width:26px" title="Attachments">📎</th>
     <th style="min-width:120px">Assigned</th>
     <th class="sortable" onclick="setSort(&#39;triage&#39;)" style="width:100px">Status</th>
     <th class="sortable" onclick="setSort(&#39;date&#39;)" style="width:110px">Received ↓</th>
     <th style="min-width:110px">Date Resolved</th>
-  </tr></thead><tbody><tr><td colspan="14" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr></tbody></table></div></div>
+  </tr></thead><tbody><tr><td colspan="13" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr></tbody></table></div></div>
 </div>
 
 <!-- ── Webhook Panel ──────────────────────────────────────── -->
@@ -798,107 +507,25 @@ kbd {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
-    <p style="font-size:12px;color:var(--t2);margin-bottom:14px">Connect your n8n workflow using the URL below. The Service Worker intercepts POST requests and feeds emails directly into this dashboard (requires HTTPS or localhost).</p>
-
+    <p style="font-size:12px;color:var(--t2);margin-bottom:14px">Connect your n8n workflow using the URL below.</p>
     <div style="margin-bottom:14px">
       <label class="modal-label">Your Webhook URL</label>
       <div style="display:flex;gap:7px;align-items:center">
         <div id="whUrlBox" style="flex:1;padding:6px 10px;border:1px solid var(--b1);border-radius:var(--r);background:var(--elevated);font-family:var(--mono);font-size:11px;color:var(--t1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">http://127.0.0.1:5500/webhook</div>
         <button class="btn btn-primary btn-sm" onclick="copyWhUrl()">Copy</button>
       </div>
-      <div style="display:flex;align-items:center;gap:6px;margin-top:7px;font-size:11px;color:var(--t2)">
-        <span class="pulse-dot" id="swStatusDot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; flex-shrink: 0; animation: 2s ease 0s infinite normal none running pulse;"></span>
-        <span id="swStatusLabel">Service Worker active — webhook ready at URL above</span>
-      </div>
     </div>
-
     <hr style="border:none;border-top:1px solid var(--b0);margin:14px 0">
-
-    <div style="margin-bottom:14px">
-      <label class="modal-label">n8n HTTP Request Node — Body (JSON)</label>
-      <div style="position:relative">
-        <pre id="n8nSnippet" style="background:var(--elevated);border:1px solid var(--b0);border-radius:var(--r);padding:10px 36px 10px 12px;font-family:var(--mono);font-size:11px;line-height:1.6;overflow-x:auto;white-space:pre;color:var(--t0)">{
-  "id":           "{{ $json.messageId }}",
-  "sender":       "{{ $json.from }}",
-  "to":           ["{{ $json.to }}"],
-  "cc":           ["{{ $json.cc }}"],
-  "subject":      "{{ $json.subject }}",
-  "body_preview": "{{ $json.text | truncate(200) }}",
-  "full_body":    "{{ $json.text }}",
-  "company":      "{{ $json.company }}",
-  "conversation_id": "{{ $json.threadId }}",
-  "timestamp":    "{{ $now.toISO() }}"
-}</pre>
-        <button class="btn btn-ghost btn-sm" onclick="copyCode(&#39;n8nSnippet&#39;)" style="position:absolute;top:6px;right:6px;font-size:10px">Copy</button>
-      </div>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <label class="modal-label">n8n Function Node — Priority Classifier</label>
-      <div style="position:relative">
-        <pre id="fnSnippet" style="background:var(--elevated);border:1px solid var(--b0);border-radius:var(--r);padding:10px 36px 10px 12px;font-family:var(--mono);font-size:11px;line-height:1.6;overflow-x:auto;white-space:pre;color:var(--t0)">// Triage status is auto-computed from conversation thread.
-// A conversation is "addressed" if any team member (@creditriskmonitor.com)
-// has replied to it. Otherwise it's "needs_attention".
-// No manual classification needed — just pass through the email fields.
-
-return [{
-  json: {
-    ...items[0].json,
-    threadId: $json.conversationId || $json.threadId || $json.ConversationId || ''
-  }
-}];</pre>
-        <button class="btn btn-ghost btn-sm" onclick="copyCode(&#39;fnSnippet&#39;)" style="position:absolute;top:6px;right:6px;font-size:10px">Copy</button>
-      </div>
-    </div>
-
-    <hr style="border:none;border-top:1px solid var(--b0);margin:14px 0">
-
     <label class="modal-label" style="margin-bottom:10px;display:block">Add Test Email Manually</label>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div>
-        <label class="modal-label">Sender *</label>
-        <input class="modal-sel" id="tSender" placeholder="john@example.com" oninput="(function(v){var s=document.getElementById(&#39;tPriority&#39;);if(s)s.value=autoPriority(v);})(this.value)">
-      </div>
-      <div>
-        <label class="modal-label">Triage Status</label>
-        <select class="modal-sel" id="tTriageStatus">
-          <option value="unread" selected="">Unread</option>
-          <option value="open">Open</option>
-          <option value="resolved">Resolved</option>
-        </select>
-      </div>
-      <div>
-        <label class="modal-label">Priority</label>
-        <select class="modal-sel" id="tPriority">
-          <option value="High">High</option>
-          <option value="Medium" selected="">Medium</option>
-          <option value="Low">Low</option>
-        </select>
-      </div>
-      <div>
-        <label class="modal-label">Recipient (To)</label>
-        <input class="modal-sel" id="tTo" placeholder="ops@financials">
-      </div>
-      <div>
-        <label class="modal-label">Recipient 2 (CC)</label>
-        <input class="modal-sel" id="tCc" placeholder="triage@financials">
-      </div>
-      <div style="grid-column:1/-1">
-        <label class="modal-label">Subject *</label>
-        <input class="modal-sel" id="tSubject" placeholder="Re: Financial Statement Upload">
-      </div>
-      <div style="grid-column:1/-1">
-        <label class="modal-label">Body</label>
-        <textarea class="modal-ta" id="tBody" style="height:70px" placeholder="Email body text…"></textarea>
-      </div>
-      <div>
-        <label class="modal-label">Company</label>
-        <input class="modal-sel" id="tCompany" placeholder="ASJ Holdings Ltd">
-      </div>
-      <div>
-        <label class="modal-label">Conversation ID</label>
-        <input class="modal-sel" id="tConvId" placeholder="AAQkADAxNmRl…BX0=">
-      </div>
+      <div><label class="modal-label">Sender *</label><input class="modal-sel" id="tSender" placeholder="john@example.com"></div>
+      <div><label class="modal-label">Triage Status</label><select class="modal-sel" id="tTriageStatus"><option value="unread" selected="">Unread</option><option value="open">Open</option><option value="resolved">Resolved</option></select></div>
+      <div><label class="modal-label">Priority</label><select class="modal-sel" id="tPriority"><option value="High">High</option><option value="Medium" selected="">Medium</option><option value="Low">Low</option></select></div>
+      <div><label class="modal-label">Recipient (To)</label><input class="modal-sel" id="tTo" placeholder="ops@financials"></div>
+      <div><label class="modal-label">Recipient 2 (CC)</label><input class="modal-sel" id="tCc" placeholder="triage@financials"></div>
+      <div style="grid-column:1/-1"><label class="modal-label">Subject *</label><input class="modal-sel" id="tSubject" placeholder="Re: Financial Statement Upload"></div>
+      <div style="grid-column:1/-1"><label class="modal-label">Body</label><textarea class="modal-ta" id="tBody" style="height:70px" placeholder="Email body text…"></textarea></div>
+      <div><label class="modal-label">Conversation ID</label><input class="modal-sel" id="tConvId" placeholder="AAQkADAxNmRl…BX0="></div>
     </div>
     <div style="display:flex;gap:8px;margin-top:12px">
       <button class="btn btn-primary" onclick="addTestEmail()">Add Email</button>
@@ -909,9 +536,7 @@ return [{
 
 <!-- ── Overlay + Side Panel ───────────────────────────────── -->
 <div class="overlay" id="overlay" onclick="closePanel()"></div>
-<div class="side-panel" id="sidePanel">
-  <div class="sp-stripe"></div>
-</div>
+<div class="side-panel" id="sidePanel"><div class="sp-stripe"></div></div>
 
 <!-- ── Modals ─────────────────────────────────────────────── -->
 <div class="modal-wrap" id="assignModal">
@@ -947,21 +572,18 @@ return [{
   </div>
 </div>
 
-<script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ═══════════════════════════════════════════════════════════
-//  DATA
+//  DATA & STATE
 // ═══════════════════════════════════════════════════════════
 let emails = [];
-
-// ═══════════════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════════════
 let view            = "inbox";
 let selected        = null;
 let triageFilters   = [];
 let priorityFilters = [];
 let triageTarget    = "";
 let queueSel        = new Set();
+let inboxSel        = new Set();   // ← NEW: bulk select for inbox
 let sortCol         = "date";
 let sortDir         = -1;
 
@@ -981,14 +603,8 @@ function fmtDate(d) {
   return dt.toLocaleDateString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
 }
 
-function triageStatusOf(email) {
-  return email.triageStatus || "unread";
-}
+function triageStatusOf(email) { return email.triageStatus || "unread"; }
 
-/* Auto-assign priority from sender.
-   Low  = internal (creditriskmonitor.com) or auto-generated (supplychainmonitor.com portal)
-   High = external counterparty / Philips / any other sender
-   Medium is manual-only — never auto-assigned. */
 function autoPriority(sender) {
   const s = (sender || "").toLowerCase();
   if (s.includes("creditriskmonitor.com")) return "Low";
@@ -1006,23 +622,19 @@ function priorityPill(p) {
   const cls = p==='High'?'ph':p==='Medium'?'pm':'pl';
   return `<span class="pill ${cls}">${esc(p)}</span>`;
 }
-function badge(s) { return `<span class="sbadge s${esc(s)}">${esc(s)}</span>`; }
 function chips(ts) { return (ts||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join(""); }
 function convChip(c) {
   const short = c.length > 16 ? c.slice(0,8) + '…' + c.slice(-6) : c;
   return `<span class="conv-chip" title="${esc(c)}">${esc(short)}</span>`;
 }
 
-/* Render recipient chips — show all To (blue) and CC (purple) */
 function rcptChips(toAddrs, ccAddrs) {
-  const to = toAddrs || [];
-  const cc = ccAddrs || [];
+  const to = toAddrs || [], cc = ccAddrs || [];
   if (!to.length && !cc.length) return `<span style="color:var(--t3);font-size:11px">—</span>`;
   let html = `<div class="rcpt-list">`;
   to.forEach(a => { html += `<span class="rcpt-chip" title="${esc(a)}">${esc(a)}</span>`; });
   cc.forEach(a => { html += `<span class="cc-chip" title="${esc(a)}">CC: ${esc(a)}</span>`; });
-  html += `</div>`;
-  return html;
+  return html + `</div>`;
 }
 
 function dateResolved(e) {
@@ -1047,35 +659,24 @@ function updateEmail(msgId, patches, action, note) {
       audit_log:[...(e.audit_log||[]),{timestamp:new Date().toISOString(),user:role(),action,note:note||""}],
       last_updated:new Date().toISOString() };
   });
-  if (selected?.message_id===msgId) {
-    selected = emails.find(e=>e.message_id===msgId);
-    renderPanel();
-  }
+  if (selected?.message_id===msgId) { selected = emails.find(e=>e.message_id===msgId); renderPanel(); }
   render();
 }
 
-function callWebhook(ep, payload) {
-  toast(`${isDry()?"[DRY RUN] ":""}Webhook → ${ep}`, "info");
-}
+function callWebhook(ep, payload) { toast(`${isDry()?"[DRY RUN] ":""}Webhook → ${ep}`, "info"); }
 
 // ═══════════════════════════════════════════════════════════
 //  FILTERING / SORTING
 // ═══════════════════════════════════════════════════════════
-const AUTO_EMAIL_SENDER = "portalsupport@supplychainmonitor.com";
-
 function filtered() {
-  const q    = (document.getElementById("searchInput").value||"").toLowerCase();
-  const co   = document.getElementById("fltCompany").value;
-  const as   = document.getElementById("fltAssigned").value;
-  const hide = document.getElementById("hideAutoEmails")?.checked;
+  const q  = (document.getElementById("searchInput").value||"").toLowerCase();
+  const as = document.getElementById("fltAssigned").value;
   let data = [...emails];
-  if (hide) data = data.filter(e => e.sender.toLowerCase() !== AUTO_EMAIL_SENDER);
   if (q) data = data.filter(e =>
-    (e.subject+" "+(e.full_body||e.body_preview||"")+" "+e.company+" "+e.sender+" "+
+    (e.subject+" "+(e.full_body||e.body_preview||"")+" "+e.sender+" "+
      (e.to||[]).join(" ")+" "+(e.cc||[]).join(" ")).toLowerCase().includes(q));
   if (triageFilters.length)   data = data.filter(e => triageFilters.includes(triageStatusOf(e)));
   if (priorityFilters.length) data = data.filter(e => priorityFilters.includes(e.priority||"Medium"));
-  if (co) data = data.filter(e=>e.company===co);
   if (as) data = data.filter(e=>e.assigned_to===as);
   data.sort((a,b)=>{
     if (sortCol==="triage")  { const w={unread:0,open:1,resolved:2}; return sortDir*(w[triageStatusOf(a)]-w[triageStatusOf(b)]); }
@@ -1089,9 +690,9 @@ function filtered() {
 function toggleTF(ts) {
   const i = triageFilters.indexOf(ts);
   if (i>=0) triageFilters.splice(i,1); else triageFilters.push(ts);
-  document.getElementById("pfUnread").className   = "pf-btn" + (triageFilters.includes("unread")    ? " pf-unread"   : "");
-  document.getElementById("pfOpen").className     = "pf-btn" + (triageFilters.includes("open")      ? " pf-open-ts"  : "");
-  document.getElementById("pfResolved").className = "pf-btn" + (triageFilters.includes("resolved")  ? " pf-resolved" : "");
+  document.getElementById("pfUnread").className   = "pf-btn" + (triageFilters.includes("unread")   ? " pf-unread"   : "");
+  document.getElementById("pfOpen").className     = "pf-btn" + (triageFilters.includes("open")     ? " pf-open-ts"  : "");
+  document.getElementById("pfResolved").className = "pf-btn" + (triageFilters.includes("resolved") ? " pf-resolved" : "");
   render();
 }
 
@@ -1105,20 +706,14 @@ function togglePF(p) {
 }
 
 function populateDropdowns() {
-  const cs=[...new Set(emails.map(e=>e.company).filter(Boolean))];
   const as=[...new Set(emails.map(e=>e.assigned_to).filter(Boolean))];
-  const cf=document.getElementById("fltCompany"), af=document.getElementById("fltAssigned");
-  const cv=cf.value, av=af.value;
-  cf.innerHTML='<option value="">All Companies</option>'+cs.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
+  const af=document.getElementById("fltAssigned");
+  const av=af.value;
   af.innerHTML='<option value="">All Assignees</option>'+as.map(a=>`<option value="${esc(a)}">${esc(a)}</option>`).join("");
-  cf.value=cv; af.value=av;
+  af.value=av;
 }
 
-function setSort(col) {
-  sortDir = (sortCol===col) ? -sortDir : -1;
-  sortCol = col;
-  render();
-}
+function setSort(col) { sortDir = (sortCol===col) ? -sortDir : -1; sortCol = col; render(); }
 function sa(col) { return sortCol===col?(sortDir===-1?" ↓":" ↑"):""; }
 
 // ═══════════════════════════════════════════════════════════
@@ -1127,6 +722,7 @@ function sa(col) { return sortCol===col?(sortDir===-1?" ↓":" ↑"):""; }
 function switchView(v) {
   view = v;
   document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===v));
+  inboxSel.clear(); updateBulkBar();
   render();
 }
 
@@ -1144,21 +740,77 @@ function render() {
 }
 
 // ═══════════════════════════════════════════════════════════
+//  BULK SELECT / DELETE (INBOX)
+// ═══════════════════════════════════════════════════════════
+function toggleInboxCheck(msgId) {
+  if (inboxSel.has(msgId)) inboxSel.delete(msgId); else inboxSel.add(msgId);
+  updateBulkBar();
+  // Update checkbox visually
+  const cb = document.getElementById('icb-'+msgId);
+  if (cb) cb.checked = inboxSel.has(msgId);
+  // Update select-all
+  const allCb = document.getElementById('inboxSelectAll');
+  if (allCb) allCb.checked = inboxSel.size > 0 && inboxSel.size === document.querySelectorAll('.inbox-cb').length;
+}
+
+function toggleInboxSelectAll() {
+  const cbs = document.querySelectorAll('.inbox-cb');
+  const allChecked = inboxSel.size === cbs.length && cbs.length > 0;
+  if (allChecked) {
+    inboxSel.clear();
+  } else {
+    cbs.forEach(cb => inboxSel.add(cb.dataset.id));
+  }
+  cbs.forEach(cb => cb.checked = inboxSel.has(cb.dataset.id));
+  updateBulkBar();
+}
+
+function updateBulkBar() {
+  const bar = document.getElementById('bulkBar');
+  const cnt = document.getElementById('bulkCount');
+  if (inboxSel.size > 0 && view === 'inbox') {
+    bar.classList.add('on');
+    cnt.textContent = inboxSel.size;
+  } else {
+    bar.classList.remove('on');
+  }
+}
+
+function bulkDelete() {
+  if (!inboxSel.size) return;
+  if (!confirm(`Delete ${inboxSel.size} selected email${inboxSel.size>1?'s':''}? This cannot be undone.`)) return;
+  emails = emails.filter(e => !inboxSel.has(e.message_id));
+  const count = inboxSel.size;
+  inboxSel.clear();
+  updateBulkBar();
+  toast(`${count} email${count>1?'s':''} deleted`);
+  render();
+}
+
+function clearSelection() {
+  inboxSel.clear();
+  updateBulkBar();
+  document.querySelectorAll('.inbox-cb').forEach(cb => cb.checked = false);
+  const allCb = document.getElementById('inboxSelectAll');
+  if (allCb) allCb.checked = false;
+}
+
+// ═══════════════════════════════════════════════════════════
 //  INBOX VIEW
 // ═══════════════════════════════════════════════════════════
 function renderInbox(mc, data) {
   const threadMap={};
   emails.forEach(e=>{ threadMap[e.conversation_id]=(threadMap[e.conversation_id]||0)+1; });
 
+  const isViewer = role()==="Viewer";
   let html=`<div class="tbl-wrap"><table class="tbl"><thead><tr>
-    ${role()!=="Viewer"?`<th style="width:36px"></th>`:""}
-    <th style="width:28px;text-align:center">#</th>
+    ${!isViewer?`<th style="width:36px;text-align:center"><input type="checkbox" class="chk" id="inboxSelectAll" onclick="toggleInboxSelectAll()"></th>`:""}
+    <th style="min-width:100px">Message ID</th>
     <th style="width:80px">Priority</th>
     <th style="width:90px">Conversation ID</th>
-    <th class="sortable" onclick="setSort('sender')"  style="min-width:140px">Sender${sa('sender')}</th>
+    <th class="sortable" onclick="setSort('sender')" style="min-width:140px">Sender${sa('sender')}</th>
     <th style="min-width:220px">Recipients (To + CC)</th>
     <th class="sortable" onclick="setSort('subject')" style="min-width:250px">Subject${sa('subject')}</th>
-    <th style="min-width:100px">Company</th>
     <th style="min-width:200px">Body</th>
     <th style="width:26px" title="Attachments">📎</th>
     <th style="min-width:120px">Assigned</th>
@@ -1168,18 +820,17 @@ function renderInbox(mc, data) {
   </tr></thead><tbody>`;
 
   if (!data.length) {
-    html+=`<tr><td colspan="${role()!=="Viewer"?14:13}" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr>`;
+    html+=`<tr><td colspan="${isViewer?12:13}" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr>`;
   }
 
   data.forEach(e=>{
     const tc = threadMap[e.conversation_id]||1;
+    const checked = inboxSel.has(e.message_id) ? 'checked' : '';
     html+=`<tr class="${e.triageStatus==="unread"?"unread":""}${selected?.message_id===e.message_id?" selected":""}"
                onclick="openDetail('${esc(e.message_id)}')">
-      ${role()!=="Viewer"?`<td style="text-align:center" onclick="event.stopPropagation()">
-        <button title="Delete email" onclick="deleteEmail('${esc(e.message_id)}')"
-          style="background:none;border:none;cursor:pointer;color:var(--t3);font-size:14px;padding:2px 4px;border-radius:3px;line-height:1"
-          onmouseover="this.style.color='var(--red)';this.style.background='var(--red-dim)'"
-          onmouseout="this.style.color='var(--t3)';this.style.background='none'">🗑</button>
+      ${!isViewer?`<td style="text-align:center" onclick="event.stopPropagation()">
+        <input type="checkbox" class="chk inbox-cb" id="icb-${esc(e.message_id)}" data-id="${esc(e.message_id)}" ${checked}
+          onclick="toggleInboxCheck('${esc(e.message_id)}')">
       </td>`:""}
       <td style="text-align:center;font-family:var(--mono);font-size:10px;color:var(--t3)">${esc(e.message_id)}</td>
       <td>${priorityPill(e.priority||'Medium')}</td>
@@ -1197,10 +848,7 @@ function renderInbox(mc, data) {
           ${e.has_attachments?`<span style="margin-left:3px">${attachIcon()}</span>`:""}
         </div>
       </td>
-      <td style="font-weight:600;font-size:12px;white-space:nowrap">${esc(e.company)||`<span style="color:var(--t3)">—</span>`}</td>
-      <td style="min-width:200px">
-        <div class="body-text">${esc(e.full_body||e.body_preview||"")}</div>
-      </td>
+      <td style="min-width:200px"><div class="body-text">${esc(e.full_body||e.body_preview||"")}</div></td>
       <td style="text-align:center">${e.has_attachments?attachIcon():""}</td>
       <td class="assign-cell" onclick="event.stopPropagation();startEditAssignee('${esc(e.message_id)}',this)">
         <span>${e.assigned_to ? esc(e.assigned_to) : `<span style="color:var(--t3)">Unassigned</span>`}</span>
@@ -1269,7 +917,6 @@ function renderThreads(mc, data) {
     </tr>
     <tr id="tm-${esc(convId)}" style="display:none"><td colspan="9" style="padding:0">
       <div class="thread-msgs" id="tmd-${esc(convId)}">`;
-
     msgs.forEach((e,i)=>{
       const toAll=[...(e.to||[]),...(e.cc||[])];
       html+=`<div class="thread-msg" onclick="event.stopPropagation();openDetail('${esc(e.message_id)}')">
@@ -1289,7 +936,6 @@ function renderThreads(mc, data) {
     });
     html+=`</div></td></tr>`;
   });
-
   html+="</tbody></table>";
   mc.innerHTML=html;
 }
@@ -1316,8 +962,7 @@ function renderKanban(mc, data) {
 
   let html='<div class="kanban-wrap">';
   ["unread","open","resolved"].forEach(ts=>{
-    const cssKey = ts;
-    html+=`<div class="k-col k-${cssKey}" id="kc-${ts}"
+    html+=`<div class="k-col k-${ts}" id="kc-${ts}"
                 ondragover="event.preventDefault();this.classList.add('drop-over')"
                 ondragleave="this.classList.remove('drop-over')"
                 ondrop="kanbanDrop(event,'${ts}');this.classList.remove('drop-over')">
@@ -1336,7 +981,6 @@ function renderKanban(mc, data) {
         <div class="k-card-meta">
           ${priorityPill(e.priority||'Medium')}
           ${convChip(e.conversation_id)}
-          <span style="font-size:11px;font-weight:600">${esc(e.company||"—")}</span>
           <span style="font-size:10px;color:var(--t2)">${fmtDate(e.received_date_time)}</span>
           ${e.has_attachments?attachIcon():""}
         </div>
@@ -1357,8 +1001,7 @@ function kanbanDrop(event, newTriageStatus) {
   if (role()==="Viewer") { toast("Viewers cannot change status","error"); return; }
   updateEmail(msgId, {triageStatus:newTriageStatus}, "kanban_drag", `Moved to ${newTriageStatus}`);
   if (document.getElementById("syncOutlook").checked) callWebhook("move",{message_id:msgId,target_triage:newTriageStatus});
-  const label = newTriageStatus==="resolved"?"Resolved":newTriageStatus==="open"?"Open":"Unread";
-  toast(`Status → ${label}`);
+  toast(`Status → ${newTriageStatus==="resolved"?"Resolved":newTriageStatus==="open"?"Open":"Unread"}`);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1367,9 +1010,9 @@ function kanbanDrop(event, newTriageStatus) {
 function renderQueue(mc) {
   const q=emails.filter(e=>triageStatusOf(e)==="unread"||triageStatusOf(e)==="open")
                .sort((a,b)=>new Date(a.received_date_time)-new Date(b.received_date_time));
-  const unreadCnt   = emails.filter(e=>triageStatusOf(e)==="unread").length;
-  const openCnt     = emails.filter(e=>triageStatusOf(e)==="open").length;
-  const resolvedCnt = emails.filter(e=>triageStatusOf(e)==="resolved").length;
+  const unreadCnt=emails.filter(e=>triageStatusOf(e)==="unread").length;
+  const openCnt=emails.filter(e=>triageStatusOf(e)==="open").length;
+  const resolvedCnt=emails.filter(e=>triageStatusOf(e)==="resolved").length;
   queueSel=new Set();
 
   let html=`<div class="q-stats">
@@ -1384,7 +1027,6 @@ function renderQueue(mc) {
     <th style="min-width:140px">From</th>
     <th style="min-width:150px">To + CC</th>
     <th style="width:80px">Conv ID</th>
-    <th style="min-width:110px">Company</th>
     <th style="width:110px">Received</th>
     <th style="min-width:100px">Assigned</th>
     <th style="width:90px">Status</th>
@@ -1401,7 +1043,6 @@ function renderQueue(mc) {
       <td class="col-from"><div class="from-main" title="${esc(e.sender)}">${esc(e.sender)}</div></td>
       <td>${rcptChips(e.to, e.cc)}</td>
       <td class="col-conv">${convChip(e.conversation_id)}</td>
-      <td style="font-weight:600;font-size:12px">${esc(e.company||"—")}</td>
       <td class="col-date">${fmtDate(e.received_date_time)}</td>
       <td class="assign-cell" onclick="event.stopPropagation();startEditAssignee('${esc(e.message_id)}',this)">
         <span>${e.assigned_to ? esc(e.assigned_to) : `<span style="color:var(--t3)">—</span>`}</span>
@@ -1443,12 +1084,12 @@ function bulkAction(a) {
 // ═══════════════════════════════════════════════════════════
 function renderAnalytics(mc) {
   const now=Date.now();
-  const unreadCnt   = emails.filter(e=>triageStatusOf(e)==="unread").length;
-  const openCnt     = emails.filter(e=>triageStatusOf(e)==="open").length;
-  const resolvedCnt = emails.filter(e=>triageStatusOf(e)==="resolved").length;
-  const new24       = emails.filter(e=>triageStatusOf(e)==="unread"&&(now-new Date(e.received_date_time))<86400000).length;
-  const aging       = emails.filter(e=>triageStatusOf(e)==="unread"&&(now-new Date(e.received_date_time))>86400000).length;
-  const convCount   = new Set(emails.map(e=>e.conversation_id)).size;
+  const unreadCnt=emails.filter(e=>triageStatusOf(e)==="unread").length;
+  const openCnt=emails.filter(e=>triageStatusOf(e)==="open").length;
+  const resolvedCnt=emails.filter(e=>triageStatusOf(e)==="resolved").length;
+  const new24=emails.filter(e=>triageStatusOf(e)==="unread"&&(now-new Date(e.received_date_time))<86400000).length;
+  const aging=emails.filter(e=>triageStatusOf(e)==="unread"&&(now-new Date(e.received_date_time))>86400000).length;
+  const convCount=new Set(emails.map(e=>e.conversation_id)).size;
 
   const days={};
   for(let i=29;i>=0;i--){const d=new Date(now-i*86400000).toISOString().split("T")[0];days[d]=0;}
@@ -1456,18 +1097,12 @@ function renderAnalytics(mc) {
   const maxC=Math.max(1,...Object.values(days));
 
   let html=`<div class="an-grid">
-    <div class="an-kpi" style="border-top-color:#334155">
-      <div class="an-val" style="color:#334155">${unreadCnt}</div><div class="an-label">Unread</div></div>
-    <div class="an-kpi" style="border-top-color:var(--amber)">
-      <div class="an-val" style="color:var(--amber)">${openCnt}</div><div class="an-label">Open</div></div>
-    <div class="an-kpi" style="border-top-color:var(--green)">
-      <div class="an-val" style="color:var(--green)">${resolvedCnt}</div><div class="an-label">Resolved</div></div>
-    <div class="an-kpi" style="border-top-color:var(--blue)">
-      <div class="an-val" style="color:var(--blue)">${new24}</div><div class="an-label">New Unread (24h)</div></div>
-    <div class="an-kpi" style="border-top-color:var(--red)">
-      <div class="an-val" style="color:var(--red)">${aging}</div><div class="an-label">Aging Unread &gt;24h</div></div>
-    <div class="an-kpi" style="border-top-color:var(--t2)">
-      <div class="an-val" style="color:var(--t1)">${convCount}</div><div class="an-label">Conversations</div></div>
+    <div class="an-kpi" style="border-top-color:#334155"><div class="an-val" style="color:#334155">${unreadCnt}</div><div class="an-label">Unread</div></div>
+    <div class="an-kpi" style="border-top-color:var(--amber)"><div class="an-val" style="color:var(--amber)">${openCnt}</div><div class="an-label">Open</div></div>
+    <div class="an-kpi" style="border-top-color:var(--green)"><div class="an-val" style="color:var(--green)">${resolvedCnt}</div><div class="an-label">Resolved</div></div>
+    <div class="an-kpi" style="border-top-color:var(--blue)"><div class="an-val" style="color:var(--blue)">${new24}</div><div class="an-label">New Unread (24h)</div></div>
+    <div class="an-kpi" style="border-top-color:var(--red)"><div class="an-val" style="color:var(--red)">${aging}</div><div class="an-label">Aging Unread &gt;24h</div></div>
+    <div class="an-kpi" style="border-top-color:var(--t2)"><div class="an-val" style="color:var(--t1)">${convCount}</div><div class="an-label">Conversations</div></div>
   </div>
   <div class="chart-card">
     <div class="chart-title">Unread Emails — Last 30 Days</div>
@@ -1507,9 +1142,6 @@ function renderPanel() {
   const audits=(e.audit_log||[]).slice(-8).reverse();
   const convMsgs=emails.filter(m=>m.conversation_id===e.conversation_id)
                        .sort((a,b)=>new Date(a.received_date_time)-new Date(b.received_date_time));
-  const toStr=(e.to||[]).join(", ");
-  const ccStr=(e.cc||[]).join(", ");
-  const toAll=[...(e.to||[]),...(e.cc||[])];
 
   const panelEl=document.getElementById("sidePanel");
   panelEl.innerHTML=`
@@ -1528,7 +1160,6 @@ function renderPanel() {
       </button>
     </div>
     <div class="sp-body">
-
       <div class="meta-grid">
         <span class="meta-k">Priority</span>
         <span class="meta-v" style="display:flex;align-items:center;gap:7px">
@@ -1540,39 +1171,28 @@ function renderPanel() {
             <option value="Low"   ${(e.priority||autoPriority(e.sender))==='Low'   ?'selected':''}>Low</option>
           </select>
         </span>
-
         <span class="meta-k">Status</span>
         <span class="meta-v">${pill(triageStatusOf(e))}</span>
-
         <span class="meta-k">From</span>
         <span class="meta-v">${esc(e.sender)}</span>
-
         <span class="meta-k">To</span>
         <span class="meta-v">
           ${(e.to||[]).length ? (e.to||[]).map(a=>`<span style="display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;border-radius:3px;background:var(--blue-dim);color:var(--blue);border:1px solid rgba(26,79,156,.2);font-size:11px">${esc(a)}</span>`).join("") : '<span style="color:var(--t3)">—</span>'}
         </span>
-
         ${(e.cc||[]).length?`
         <span class="meta-k">CC</span>
         <span class="meta-v">
           ${(e.cc||[]).map(a=>`<span style="display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;border-radius:3px;background:var(--elevated);color:var(--t1);border:1px solid var(--b0);font-size:11px">${esc(a)}</span>`).join("")}
         </span>`:""}
-
         <span class="meta-k">Received</span>
         <span class="meta-v">${new Date(e.received_date_time).toLocaleString()}</span>
-
-        <span class="meta-k">Company</span>
-        <span class="meta-v" style="font-weight:700">${esc(e.company||"—")}</span>
-
         <span class="meta-k">Conv ID</span>
         <span class="meta-v">${convChip(e.conversation_id)}</span>
-
         <span class="meta-k">Assigned</span>
         <span class="meta-v assign-cell" style="cursor:pointer" onclick="startEditPanelAssignee('${esc(e.message_id)}',this)">
           <span>${e.assigned_to ? esc(e.assigned_to) : `<span style="color:var(--t3)">Unassigned</span>`}</span>
           <span class="assign-edit-ico">✏</span>
         </span>
-
         <span class="meta-k">Outlook</span>
         <span class="meta-v"><a href="${esc(e.web_link)}" target="_blank">Open in Outlook ↗</a></span>
       </div>
@@ -1588,8 +1208,8 @@ function renderPanel() {
       <div class="email-body">${esc(e.full_body||e.body_preview)}</div>
 
       <div class="sp-actions">
-        ${r!=="Viewer"?`<button class="btn btn-amber btn-sm"    onclick="openPriModal()">Set Status</button>`:""}
-        ${r!=="Viewer"?`<button class="btn btn-ghost btn-sm"    onclick="doMoveTag()">Move/Tag</button>`:""}
+        ${r!=="Viewer"?`<button class="btn btn-amber btn-sm" onclick="openPriModal()">Set Status</button>`:""}
+        ${r!=="Viewer"?`<button class="btn btn-ghost btn-sm" onclick="doMoveTag()">Move/Tag</button>`:""}
         ${r!=="Viewer"&&triageStatusOf(e)!=="resolved"?`<button class="btn btn-success btn-sm" onclick="doResolve()">Resolve</button>`:""}
         <button class="btn btn-ghost btn-sm" onclick="doRerun()">Re-classify</button>
         ${r!=="Viewer"?`<button class="btn btn-sm" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(192,0,0,.2)" onclick="deleteEmail('${esc(e.message_id)}')">Delete</button>`:""}
@@ -1686,8 +1306,7 @@ function renderPriBtns() {
     {v:"resolved",label:"Resolved", cls:"btn btn-success",style:""}
   ].map(({v,label,cls,style})=>{
     const a=triageTarget===v;
-    const activeStyle=a&&style?`style="${style}"`:a?"":"";
-    return `<button class="${a?cls:"btn btn-ghost"}" ${activeStyle} style="${a&&style?style:""}flex:1;justify-content:center" onclick="triageTarget='${v}';renderPriBtns()">${label}</button>`;
+    return `<button class="${a?cls:"btn btn-ghost"}" ${a&&style?`style="${style}"`:""}style="${a&&style?style:""}flex:1;justify-content:center" onclick="triageTarget='${v}';renderPriBtns()">${label}</button>`;
   }).join("");
 }
 function confirmPriority() {
@@ -1695,8 +1314,7 @@ function confirmPriority() {
   const reason=document.getElementById("priReason").value;
   updateEmail(selected.message_id,{triageStatus:triageTarget},"set_status",`Set to ${triageTarget}${reason?" — "+reason:""}`);
   if(document.getElementById("syncOutlook").checked) callWebhook("move",{message_id:selected.message_id,target_triage:triageTarget});
-  const label = triageTarget==="resolved"?"Resolved":triageTarget==="open"?"Open":"Unread";
-  toast(`Status → ${label}`);
+  toast(`Status → ${triageTarget==="resolved"?"Resolved":triageTarget==="open"?"Open":"Unread"}`);
   closeModal("priorityModal");
 }
 
@@ -1705,12 +1323,6 @@ function doMoveTag() {
   callWebhook("move",{message_id:selected.message_id,target_triage:triageStatusOf(selected)});
   updateEmail(selected.message_id,{},"outlook_move_tag",`${isDry()?"[DRY RUN] ":""}Moved/tagged`);
   toast(`${isDry()?"[DRY RUN] ":""}Outlook action sent`);
-}
-function doEscalate() {
-  if(!selected) return;
-  updateEmail(selected.message_id,{status:"Escalated",assigned_to:"richard.narine"},"escalate","Escalated by manager");
-  callWebhook("notify",{message_id:selected.message_id,subject:selected.subject});
-  toast("Escalated → richard.narine");
 }
 function doResolve() {
   if(!selected) return;
@@ -1725,6 +1337,8 @@ function deleteEmail(msgId) {
     document.getElementById("overlay").classList.remove("on");
     document.getElementById("sidePanel").classList.remove("open");
   }
+  inboxSel.delete(msgId);
+  updateBulkBar();
   toast("Email deleted");
   render();
 }
@@ -1734,8 +1348,7 @@ function doRerun() {
   const ts = triageStatusOf(selected);
   const action = ts==="unread"?"Review and respond — not yet read":ts==="open"?"Being worked on — awaiting response":"Resolved — no further action needed";
   updateEmail(selected.message_id,{suggested_action:action},"rerun_classification",`Status: ${ts}`);
-  const label = ts==="resolved"?"Resolved":ts==="open"?"Open":"Unread";
-  toast(`Re-classified: ${label}`);
+  toast(`Re-classified: ${ts==="resolved"?"Resolved":ts==="open"?"Open":"Unread"}`);
 }
 function setPriority(msgId, val) {
   updateEmail(msgId, {priority: val}, 'set_priority', `Priority → ${val}`);
@@ -1815,66 +1428,46 @@ document.addEventListener("keydown", ev=>{
 // ═══════════════════════════════════════════════════════════
 //  WEBHOOK PANEL
 // ═══════════════════════════════════════════════════════════
-function openWebhookPanel() {
-  document.getElementById("webhookPanel").classList.add("on");
-}
-
+function openWebhookPanel() { document.getElementById("webhookPanel").classList.add("on"); }
 function copyWhUrl() {
   const url = document.getElementById("whUrlBox").textContent.trim();
-  if (url === "—" || url.startsWith("Host")) { toast("No webhook URL yet — serve over HTTPS or localhost","error"); return; }
   navigator.clipboard.writeText(url).then(()=>toast("Webhook URL copied!","success"));
-}
-
-function copyCode(id) {
-  const el = document.getElementById(id);
-  navigator.clipboard.writeText(el.textContent).then(()=>toast("Copied!","success"));
 }
 
 function addTestEmail() {
   const sender  = document.getElementById("tSender").value.trim();
   const subject = document.getElementById("tSubject").value.trim();
   if (!sender || !subject) { toast("Sender and Subject are required","error"); return; }
-
   const toVal      = document.getElementById("tTo").value.trim();
   const ccVal      = document.getElementById("tCc").value.trim();
   const body       = document.getElementById("tBody").value.trim();
-  const company    = document.getElementById("tCompany").value.trim();
   const convId     = document.getElementById("tConvId").value.trim() || `CONV-${Date.now()}`;
   const triageStatus = document.getElementById("tTriageStatus").value || "unread";
   const priority   = document.getElementById("tPriority").value || autoPriority(sender);
 
   injectEmails([{
-    message_id:      `MSG-${Date.now()}`,
-    conversation_id: convId,
-    subject,
-    sender,
-    to:   toVal  ? toVal.split(",").map(s=>s.trim()).filter(Boolean) : [],
-    cc:   ccVal  ? ccVal.split(",").map(s=>s.trim()).filter(Boolean) : [],
-    body_preview:  body.slice(0,200),
-    full_body:     body,
-    company,
-    suggested_action: "Review and process",
+    message_id: `MSG-${Date.now()}`, conversation_id: convId, subject, sender,
+    to: toVal ? toVal.split(",").map(s=>s.trim()).filter(Boolean) : [],
+    cc: ccVal ? ccVal.split(",").map(s=>s.trim()).filter(Boolean) : [],
+    body_preview: body.slice(0,200), full_body: body,
+    company: "", suggested_action: "Review and process",
     assigned_to:"", triageStatus, priority, tags:[], audit_log:[],
     received_date_time: new Date().toISOString(),
-    has_attachments: false, is_read: false,
-    web_link:"#", last_updated: new Date().toISOString()
+    has_attachments: false, is_read: false, web_link:"#", last_updated: new Date().toISOString()
   }]);
-
-  // Reset form
-  ["tSender","tSubject","tTo","tCc","tBody","tCompany","tConvId"].forEach(id=>document.getElementById(id).value="");
+  ["tSender","tSubject","tTo","tCc","tBody","tConvId"].forEach(id=>document.getElementById(id).value="");
   closeModal("webhookPanel");
 }
 
 function addSampleEmails() {
-  const now = new Date();
-  const ts  = (minAgo) => new Date(now-minAgo*60000).toISOString();
+  const now = new Date(), ts = (minAgo) => new Date(now-minAgo*60000).toISOString();
   injectEmails([
-    { message_id:`MSG-S1`, conversation_id:"CONV-S1", subject:"URGENT: PDF Processing Failure — ASJ Holdings", sender:"kgruenwald@creditriskmonitor.com", to:["richard.narine","ops@financials"], cc:["triage@financials"], body_preview:"Critical error encountered while processing ASJ_Holdings_FY2026.pdf — parsing failed on page 4. Immediate re-upload required.", full_body:"Critical error encountered while processing ASJ_Holdings_FY2026.pdf — parsing failed on page 4. Immediate re-upload required.", company:"ASJ Holdings Ltd", suggested_action:"Request re-upload immediately", assigned_to:"richard.narine", triageStatus:"unread", tags:["error"], audit_log:[], received_date_time:ts(3), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(3) },
-    { message_id:`MSG-S2`, conversation_id:"CONV-S1", subject:"RE: URGENT: PDF Processing Failure — ASJ Holdings", sender:"richard.narine@creditriskmonitor.com", to:["kgruenwald@creditriskmonitor.com"], cc:["ops@financials"], body_preview:"Acknowledged — I have contacted ASJ Holdings directly and requested a re-upload. Awaiting response.", full_body:"Acknowledged — I have contacted ASJ Holdings directly and requested a re-upload. Awaiting response.", company:"ASJ Holdings Ltd", suggested_action:"Await re-upload confirmation", assigned_to:"richard.narine", triageStatus:"open", tags:["error","follow-up"], audit_log:[], received_date_time:ts(1), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(1) },
-    { message_id:`MSG-S3`, conversation_id:"CONV-S2", subject:"Invitation to Share Financial Statements — Clico.pl", sender:"PortalSupport@supplychainmonitor.com", to:["triage@financials"], cc:[], body_preview:"Philips Risk Central has extended an invitation for Clico.pl to share confidential financial statements through the portal.", full_body:"Philips Risk Central has extended an invitation for Clico.pl to share confidential financial statements through the portal.", company:"Clico.pl", suggested_action:"Verify permissions and confirm upload", assigned_to:"triage@financials", triageStatus:"unread", tags:["portal"], audit_log:[], received_date_time:ts(30), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(30) },
-    { message_id:`MSG-S4`, conversation_id:"CONV-S3", subject:"RE: Upload Confirmation — Mill Rock Packaging", sender:"PortalSupport@supplychainmonitor.com", to:["ops@financials","triage@financials"], cc:[], body_preview:"Upload completed successfully for Mill Rock Packaging Inc. FY2026 statements. No further action required.", full_body:"Upload completed successfully for Mill Rock Packaging Inc. FY2026 statements. No further action required.", company:"Mill Rock Packaging Inc.", suggested_action:"No action required", assigned_to:"", triageStatus:"resolved", tags:["confirm"], audit_log:[], received_date_time:ts(120), has_attachments:true, is_read:true, web_link:"#", last_updated:ts(120) },
-    { message_id:`MSG-S5`, conversation_id:"CONV-S4", subject:"Action Required: Interpak BTM Statement Review", sender:"CGulick@creditriskmonitor.com", to:["david.holland","triage@financials"], cc:["ops@financials"], body_preview:"Attached PDF for Interpak BTM requires review. Multiple discrepancies found in the balance sheet — please verify before publishing.", full_body:"Attached PDF for Interpak BTM requires review. Multiple discrepancies found in the balance sheet — please verify before publishing.", company:"Interpak BTM", suggested_action:"Review PDF for balance sheet discrepancies", assigned_to:"david.holland", triageStatus:"unread", tags:["attachment","review"], audit_log:[], received_date_time:ts(10), has_attachments:true, is_read:false, web_link:"#", last_updated:ts(10) },
-    { message_id:`MSG-S6`, conversation_id:"CONV-S5", subject:"System: New Portal User Registration", sender:"PortalSupport@creditriskmonitor.com", to:["triage@financials"], cc:[], body_preview:"A new portal user has registered: contact@newtenant.com. Please review and approve access within 48 hours per onboarding policy.", full_body:"A new portal user has registered: contact@newtenant.com. Please review and approve access within 48 hours per onboarding policy.", company:"", suggested_action:"Review and approve new user access", assigned_to:"", triageStatus:"unread", tags:["onboarding"], audit_log:[], received_date_time:ts(200), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(200) }
+    { message_id:`MSG-S1`, conversation_id:"CONV-S1", subject:"URGENT: PDF Processing Failure — ASJ Holdings", sender:"kgruenwald@creditriskmonitor.com", to:["richard.narine","ops@financials"], cc:["triage@financials"], body_preview:"Critical error encountered while processing ASJ_Holdings_FY2026.pdf.", full_body:"Critical error encountered while processing ASJ_Holdings_FY2026.pdf — parsing failed on page 4.", company:"", suggested_action:"Request re-upload immediately", assigned_to:"richard.narine", triageStatus:"unread", tags:["error"], audit_log:[], received_date_time:ts(3), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(3) },
+    { message_id:`MSG-S2`, conversation_id:"CONV-S1", subject:"RE: URGENT: PDF Processing Failure — ASJ Holdings", sender:"richard.narine@creditriskmonitor.com", to:["kgruenwald@creditriskmonitor.com"], cc:["ops@financials"], body_preview:"Acknowledged — I have contacted ASJ Holdings directly.", full_body:"Acknowledged — I have contacted ASJ Holdings directly and requested a re-upload.", company:"", suggested_action:"Await re-upload confirmation", assigned_to:"richard.narine", triageStatus:"open", tags:["error","follow-up"], audit_log:[], received_date_time:ts(1), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(1) },
+    { message_id:`MSG-S3`, conversation_id:"CONV-S2", subject:"Invitation to Share Financial Statements — Clico.pl", sender:"PortalSupport@supplychainmonitor.com", to:["triage@financials"], cc:[], body_preview:"Philips Risk Central has extended an invitation for Clico.pl.", full_body:"Philips Risk Central has extended an invitation for Clico.pl to share financial statements.", company:"", suggested_action:"Verify permissions and confirm upload", assigned_to:"triage@financials", triageStatus:"unread", tags:["portal"], audit_log:[], received_date_time:ts(30), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(30) },
+    { message_id:`MSG-S4`, conversation_id:"CONV-S3", subject:"RE: Upload Confirmation — Mill Rock Packaging", sender:"PortalSupport@supplychainmonitor.com", to:["ops@financials","triage@financials"], cc:[], body_preview:"Upload completed successfully for Mill Rock Packaging Inc.", full_body:"Upload completed successfully for Mill Rock Packaging Inc. FY2026 statements.", company:"", suggested_action:"No action required", assigned_to:"", triageStatus:"resolved", tags:["confirm"], audit_log:[], received_date_time:ts(120), has_attachments:true, is_read:true, web_link:"#", last_updated:ts(120) },
+    { message_id:`MSG-S5`, conversation_id:"CONV-S4", subject:"Action Required: Interpak BTM Statement Review", sender:"CGulick@creditriskmonitor.com", to:["david.holland","triage@financials"], cc:["ops@financials"], body_preview:"Attached PDF for Interpak BTM requires review.", full_body:"Attached PDF for Interpak BTM requires review. Multiple discrepancies found.", company:"", suggested_action:"Review PDF for balance sheet discrepancies", assigned_to:"david.holland", triageStatus:"unread", tags:["attachment","review"], audit_log:[], received_date_time:ts(10), has_attachments:true, is_read:false, web_link:"#", last_updated:ts(10) },
+    { message_id:`MSG-S6`, conversation_id:"CONV-S5", subject:"System: New Portal User Registration", sender:"PortalSupport@creditriskmonitor.com", to:["triage@financials"], cc:[], body_preview:"A new portal user has registered: contact@newtenant.com.", full_body:"A new portal user has registered: contact@newtenant.com. Please review and approve access.", company:"", suggested_action:"Review and approve new user access", assigned_to:"", triageStatus:"unread", tags:["onboarding"], audit_log:[], received_date_time:ts(200), has_attachments:false, is_read:false, web_link:"#", last_updated:ts(200) }
   ]);
   closeModal("webhookPanel");
 }
@@ -1884,41 +1477,6 @@ function normalizePriorityStr(p) {
   if (s.includes('high'))   return 'High';
   if (s.includes('medium') || s.includes('med')) return 'Medium';
   return 'Low';
-}
-
-function normalizeN8nEmail(e) {
-  // Support both capitalized n8n Set node field names and lowercase variants
-  const convId   = e['Conversation ID'] || e.conversationId  || e.conversation_id || '';
-  const subject  = e['Subject']         || e.subject         || '(No Subject)';
-  const body     = e['Body']            || e.mainMessage      || e.body            || '';
-  const sender   = e['Sender']          || e.sender          || e.from            || 'Unknown';
-  const recip    = e['Recipient']       || e.recipient       || '';
-  const recip2   = e['Recepient 2']     || e.recipient2      || '';
-  const msgId    = e['message_id']      || e.messageId       || e.id              || `${convId || 'CONV'}_${e.index || Date.now()}`;
-  const priority = e['Priority']        || e.priority        || '';
-
-  return {
-    message_id:         msgId,
-    conversation_id:    convId,
-    subject:            subject,
-    sender:             sender,
-    to:                 recip  ? [recip]  : (Array.isArray(e.to)  ? e.to  : []),
-    cc:                 recip2 ? [recip2] : (Array.isArray(e.cc)  ? e.cc  : []),
-    body_preview:       body.slice(0, 300),
-    full_body:          body,
-    triageStatus:       e.triageStatus || 'unread',
-    priority:           normalizePriorityStr(priority),
-    company:            e.company || '',
-    suggested_action:   e.suggested_action || '',
-    assigned_to:        e.assigned_to || '',
-    tags:               e.tags || [],
-    audit_log:          [],
-    received_date_time: e.received_date_time || e.timestamp || e.receivedAt || new Date().toISOString(),
-    has_attachments:    e.has_attachments || false,
-    is_read:            e.is_read || false,
-    web_link:           e.web_link || '#',
-    last_updated:       new Date().toISOString()
-  };
 }
 
 function injectEmails(newEmails) {
@@ -1935,24 +1493,15 @@ function injectEmails(newEmails) {
 // ═══════════════════════════════════════════════════════════
 const SUPABASE_URL  = 'https://ihekahzdrfgtgxzmxibf.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZWthaHpkcmZndGd4em14aWJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4NjA0MDIsImV4cCI6MjA4OTQzNjQwMn0.PwMrafqFDfH8xlpcyYS48g_l2OUa-SG0MtFfx8gIGHc';
-const TABLE         = 'Portal%20Support%20Emails';
+const TABLE         = 'Portal Support Emails';
 
-// ═══════════════════════════════════════════════════════════
-//  FETCH FROM SUPABASE (every 30 seconds)
-// ═══════════════════════════════════════════════════════════
 async function fetchFromSupabase() {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE)}?select=*&order=created_at.desc`,
-      {
-        headers: {
-          'apikey': SUPABASE_ANON,
-          'Authorization': `Bearer ${SUPABASE_ANON}`,
-          'Content-Type': 'application/json'
-        }
-      }
+      { headers: { 'apikey': SUPABASE_ANON, 'Authorization': `Bearer ${SUPABASE_ANON}`, 'Content-Type': 'application/json' } }
     );
-    if (!res.ok) { console.error('Supabase error:', res.status, await res.text()); return; }
+    if (!res.ok) { console.error('Supabase fetch error:', res.status, await res.text()); return; }
     const rows = await res.json();
     if (rows.length > 0) {
       emails = rows.map(r => ({
@@ -1966,7 +1515,7 @@ async function fetchFromSupabase() {
         full_body:          r.main_message || '',
         triageStatus:       r.triage_status || 'unread',
         priority:           normalizePriorityStr(r.priority),
-        company:            r.company || '',
+        company:            '',
         suggested_action:   r.suggested_action || '',
         assigned_to:        r.assigned_to || '',
         tags:               [],
@@ -1979,53 +1528,13 @@ async function fetchFromSupabase() {
       }));
       render();
     }
-  } catch(e) {
-    console.log('Supabase fetch error:', e);
-  }
+  } catch(e) { console.error('Supabase fetch error:', e); }
 }
 
 // ── INIT ──────────────────────────────────────────────────
 render();
 fetchFromSupabase();
-setInterval(fetchFromSupabase, 30000);
+setInterval(fetchFromSupabase, 3600000); // 1 hour
 </script>
 
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body></html>
