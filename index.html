@@ -6,7 +6,7 @@
 <style>
 /* ── Reset ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 /* ── CRM-Inspired Token System ───────────────────────────── */
 :root {
   --bg:        #eef1f5;
@@ -43,7 +43,7 @@
   --chrome-border: rgba(255,255,255,.1);
   --chrome-hover:  rgba(255,255,255,.07);
 }
- 
+
 html, body {
   height: 100%;
   font-family: var(--font);
@@ -52,16 +52,16 @@ html, body {
   font-size: 13px;
   line-height: 1.5;
 }
- 
+
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--b1); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--b2); }
- 
+
 #app { display: flex; flex-direction: column; height: 100vh; }
- 
+
 .top-stripe { height: 6px; background: var(--red); flex-shrink: 0; }
- 
+
 .hdr {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 20px; height: 50px; background: var(--chrome);
@@ -92,7 +92,7 @@ html, body {
   background: var(--chrome-hover); color: var(--chrome-text); font-size: 11px; font-weight: 600; cursor: pointer; outline: none;
 }
 .role-sel:focus { border-color: var(--red); }
- 
+
 .tbar {
   display: flex; align-items: center; gap: 7px; padding: 7px 20px;
   background: var(--chrome-2); border-bottom: 1px solid var(--chrome-border);
@@ -137,9 +137,9 @@ kbd {
   padding: 1px 5px; border-radius: 3px; background: rgba(0,0,0,.3);
   border: 1px solid var(--chrome-border); font-family: var(--mono); font-size: 10px; color: var(--chrome-muted);
 }
- 
+
 .main { flex: 1; overflow-y: auto; overflow-x: auto; position: relative; background: var(--bg); min-height: 0; }
- 
+
 .pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: .2px; white-space: nowrap; }
 .pill-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
 .pill-unread   { color: #fff; background: #334155; }
@@ -157,18 +157,18 @@ kbd {
 .pf-high   { background: var(--red-dim);   color: var(--red);   border-color: var(--red); }
 .pf-medium { background: var(--amber-dim); color: var(--amber); border-color: var(--amber); }
 .pf-low    { background: var(--green-dim); color: var(--green); border-color: var(--green); }
- 
+
 .sbadge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; }
 .sOpen      { color: var(--blue);   background: var(--blue-dim);   border: 1px solid rgba(26,79,156,.2); }
 .sEscalated { color: var(--red);    background: var(--red-dim);    border: 1px solid rgba(192,0,0,.2); }
 .sResolved  { color: var(--green);  background: var(--green-dim);  border: 1px solid rgba(26,122,26,.2); }
- 
+
 .chip { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 500; color: var(--t2); background: var(--elevated); border: 1px solid var(--b0); }
 .conv-chip { font-family: var(--mono); font-size: 10px; padding: 1px 6px; border-radius: 3px; background: var(--elevated); color: var(--t2); border: 1px solid var(--b0); white-space: nowrap; display: inline-block; max-width: 110px; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; cursor: default; }
 .rcpt-list { display: flex; flex-wrap: wrap; gap: 2px; }
 .rcpt-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(26,79,156,.18); word-break: break-all; }
 .cc-chip { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(107,33,168,.18); word-break: break-all; }
- 
+
 .tbl-wrap { }
 .tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .tbl th {
@@ -209,12 +209,12 @@ kbd {
 .col-conv  { font-family: var(--mono); font-size: 10px; color: var(--t2); white-space: nowrap; }
 .thread-count { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; background: var(--red); color: #fff; font-size: 9px; font-weight: 700; margin-left: 4px; vertical-align: middle; }
 .attach-ico { color: var(--amber); vertical-align: middle; }
- 
+
 .assign-cell { cursor: pointer; min-width: 110px; }
 .assign-cell:hover .assign-edit-ico { opacity: 1; }
 .assign-edit-ico { opacity: 0; transition: opacity .15s; color: var(--t3); font-size: 10px; margin-left: 4px; }
 .assign-inp { width: 100%; border: none; border-bottom: 1.5px solid var(--red); outline: none; background: transparent; font-size: 12px; font-family: var(--font); color: var(--t0); padding: 1px 2px; }
- 
+
 .btn {
   padding: 5px 12px; border-radius: var(--r); border: 1px solid transparent;
   cursor: pointer; font-family: var(--font); font-size: 11px; font-weight: 700;
@@ -234,7 +234,7 @@ kbd {
 .btn-ghost   { background: var(--surface); color: var(--t0); border-color: var(--b1); }
 .btn-ghost:hover { background: var(--elevated); }
 .btn-sm { padding: 3px 9px; font-size: 11px; }
- 
+
 /* ── Bulk Delete Bar ──────────────────────────────────────── */
 .bulk-bar {
   display: none; align-items: center; gap: 10px; padding: 7px 20px;
@@ -243,7 +243,7 @@ kbd {
 }
 .bulk-bar.on { display: flex; }
 .bulk-bar .bulk-count { font-family: var(--mono); }
- 
+
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.3); z-index: 200; opacity: 0; transition: opacity .2s; pointer-events: none; }
 .overlay.on { opacity: 1; pointer-events: auto; }
 .side-panel {
@@ -264,10 +264,10 @@ kbd {
 .sp-close { background: none; border: none; color: var(--t2); cursor: pointer; padding: 3px; border-radius: 3px; transition: all .12s; flex-shrink: 0; }
 .sp-close:hover { color: var(--red); background: var(--red-light); }
 .sp-body { flex: 1; overflow-y: auto; padding: 16px 18px; }
- 
+
 .pri-sel { padding: 2px 8px; border-radius: 4px; border: 1px solid var(--b1); background: var(--surface); color: var(--t0); font-family: var(--font); font-size: 11px; font-weight: 600; cursor: pointer; outline: none; }
 .pri-sel:focus { border-color: var(--red); }
- 
+
 .sp-save-form { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--b0); }
 .sp-save-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 .sp-save-field { display: flex; flex-direction: column; gap: 3px; }
@@ -285,20 +285,20 @@ kbd {
 }
 .btn-sp-save:hover { background: var(--blue-hover, #1a3f7a); }
 .btn-sp-save.saved { background: var(--green); }
- 
+
 .meta-grid { display: grid; grid-template-columns: 80px 1fr; gap: 4px 10px; font-size: 12px; margin-bottom: 14px; background: var(--elevated); border: 1px solid var(--b0); border-radius: var(--r); padding: 10px 12px; }
 .meta-k { color: var(--t2); font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: .4px; align-self: start; padding-top: 2px; }
 .meta-v { color: var(--t0); word-break: break-all; }
 .meta-v a { color: var(--blue); text-decoration: none; }
 .meta-v a:hover { text-decoration: underline; }
- 
+
 .sp-sec-title { font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--t2); margin: 14px 0 6px; border-bottom: 1px solid var(--b0); padding-bottom: 4px; }
 .callout { background: #fffbf0; border: 1px solid #e8c96a; border-left: 3px solid var(--amber); border-radius: var(--r); padding: 9px 12px; margin-bottom: 12px; }
 .callout-label { font-size: 10px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--amber); margin-bottom: 3px; }
 .callout-text { color: #7a4f00; font-size: 13px; }
 .email-body { background: var(--elevated); border-radius: var(--r); border: 1px solid var(--b0); padding: 11px; font-size: 12px; line-height: 1.7; color: var(--t1); white-space: pre-wrap; overflow-y: auto; margin-bottom: 13px; font-family: Georgia, serif; }
 .sp-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
- 
+
 .thread-item { padding: 8px 10px; border-radius: var(--r); border: 1px solid var(--b0); background: var(--surface); margin-bottom: 4px; cursor: pointer; transition: all .12s; }
 .thread-item:hover { border-color: var(--red); background: var(--red-light); }
 .thread-item.active { border-color: var(--red); background: var(--red-light); border-left: 3px solid var(--red); }
@@ -307,13 +307,13 @@ kbd {
 .thread-time { font-size: 10px; color: var(--t2); white-space: nowrap; }
 .thread-preview { font-size: 11px; color: var(--t2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .thread-rcpt { font-size: 10px; color: var(--t3); margin-top: 1px; }
- 
+
 .audit-entry { padding: 7px 9px; margin-bottom: 3px; border-radius: var(--r); background: var(--elevated); border: 1px solid var(--b0); font-size: 11px; }
 .audit-head { display: flex; justify-content: space-between; margin-bottom: 1px; }
 .audit-act  { font-weight: 700; color: var(--t0); }
 .audit-time { color: var(--t3); font-family: var(--mono); font-size: 10px; }
 .audit-detail { color: var(--t2); }
- 
+
 .thread-group { border-bottom: 1px solid var(--b0); cursor: pointer; transition: background .1s; background: var(--surface); }
 .thread-group:hover { background: var(--hover); }
 .thread-group-header { display: flex; align-items: center; gap: 9px; padding: 9px 14px; }
@@ -335,7 +335,7 @@ kbd {
 .tm-to   { font-size: 11px; color: var(--t2); }
 .tm-preview { font-size: 11px; color: var(--t1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tm-date { font-size: 10px; color: var(--t2); white-space: nowrap; margin-left: auto; flex-shrink: 0; }
- 
+
 .kanban-wrap { display: flex; gap: 14px; padding: 16px 20px; align-items: flex-start; min-height: 100%; }
 .k-col { flex: 1; min-width: 250px; background: var(--surface); border-radius: var(--r); border: 1px solid var(--b0); border-top: 3px solid var(--b1); padding: 12px; }
 .k-col.k-unread   { border-top-color: #334155; }
@@ -359,13 +359,13 @@ kbd {
 .k-card-foot   { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
 .k-card-score  { font-family: var(--mono); font-size: 12px; font-weight: 700; }
 .k-empty       { text-align: center; padding: 20px; color: var(--t3); font-size: 12px; }
- 
+
 .q-stats  { display: flex; gap: 10px; padding: 14px 20px 10px; flex-wrap: wrap; align-items: center; }
 .q-stat   { padding: 10px 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--b0); border-top: 3px solid var(--red); }
 .q-stat-val   { font-size: 22px; font-weight: 700; font-family: var(--mono); color: var(--red); }
 .q-stat-label { font-size: 10px; color: var(--t2); font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
 .q-bulk { display: flex; gap: 6px; align-items: center; }
- 
+
 .an-grid { display: flex; gap: 10px; padding: 16px 20px 12px; flex-wrap: wrap; }
 .an-kpi  { flex: 1; min-width: 120px; padding: 12px 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--b0); border-top: 3px solid var(--b1); }
 .an-val   { font-size: 26px; font-weight: 700; font-family: var(--mono); }
@@ -375,7 +375,7 @@ kbd {
 .chart-bars  { display: flex; align-items: flex-end; gap: 3px; height: 90px; }
 .chart-bar   { flex: 1; border-radius: 2px 2px 0 0; min-width: 3px; transition: height .3s; }
 .chart-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--t3); margin-top: 4px; }
- 
+
 .modal-wrap { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 400; display: none; align-items: center; justify-content: center; }
 .modal-wrap.on { display: flex; }
 .modal { background: var(--surface); border-radius: var(--r); border: 1px solid var(--b1); border-top: 3px solid var(--red); padding: 22px; width: 360px; max-width: 92vw; box-shadow: 0 8px 32px rgba(0,0,0,.2); animation: mIn .2s ease; }
@@ -386,7 +386,7 @@ kbd {
 .modal-sel:focus, .modal-ta:focus { border-color: var(--red); }
 .modal-ta { height: 60px; resize: vertical; }
 .modal-foot { display: flex; gap: 7px; justify-content: flex-end; }
- 
+
 #toasts { position: fixed; top: 14px; right: 14px; z-index: 999; display: flex; flex-direction: column; gap: 7px; }
 .toast { padding: 9px 16px; border-radius: var(--r); font-size: 12px; font-weight: 600; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.25); animation: tIn .25s ease; max-width: 320px; }
 .t-success { background: var(--green); }
@@ -394,13 +394,13 @@ kbd {
 .t-info    { background: var(--blue); }
 @keyframes tIn { from{transform:translateX(28px);opacity:0} to{transform:translateX(0);opacity:1} }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.75)} }
- 
+
 .chk { appearance: none; width: 14px; height: 14px; border: 1.5px solid var(--b1); border-radius: 3px; background: var(--surface); cursor: pointer; position: relative; transition: all .12s; flex-shrink: 0; }
 .chk:checked { background: var(--red); border-color: var(--red); }
 .chk:checked::after { content: '✓'; position: absolute; top: -2px; left: 1px; font-size: 10px; color: #fff; font-weight: 700; }
- 
+
 .panel-wrap { padding: 0 20px 20px; }
- 
+
 @media(max-width:700px){
   .hdr { padding: 0 12px; }
   .tbar { padding: 6px 12px; }
@@ -414,7 +414,7 @@ kbd {
 <div id="app">
   <div id="toasts"></div>
   <div class="top-stripe"></div>
- 
+
   <!-- ── Header ─────────────────────────────────────────── -->
   <div class="hdr">
     <div class="hdr-left">
@@ -440,7 +440,7 @@ kbd {
       <span id="userIndicator" style="width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0" title="No user selected"></span>
     </div>
   </div>
- 
+
   <!-- ── Toolbar ────────────────────────────────────────── -->
   <div class="tbar">
     <div class="nav-grp">
@@ -483,18 +483,19 @@ kbd {
       Reset
     </button>
   </div>
- 
+
   <!-- ── Bulk Delete Bar ────────────────────────────────── -->
   <div class="bulk-bar" id="bulkBar">
     <span class="bulk-count" id="bulkCount">6</span> selected
     <button class="btn btn-danger btn-sm" onclick="bulkDelete()">🗑 Delete Selected</button>
     <button class="btn btn-ghost btn-sm" onclick="clearSelection()">Cancel</button>
   </div>
- 
+
   <!-- ── Main ───────────────────────────────────────────── -->
   <div class="main" id="mainContent"><div class="tbl-wrap"><table class="tbl"><thead><tr>
     <th style="width:36px;text-align:center"><input type="checkbox" class="chk" id="inboxSelectAll" onclick="toggleInboxSelectAll()"></th>
     <th style="width:90px;max-width:90px">Message ID</th>
+    <th style="width:70px">Priority</th>
     <th style="width:100px">Conversation ID</th>
     <th class="sortable" onclick="setSort(&#39;sender&#39;)" style="width:160px">Sender</th>
     <th style="width:180px">Recipients (To + CC)</th>
@@ -505,9 +506,9 @@ kbd {
     <th class="sortable" onclick="setSort(&#39;triage&#39;)" style="width:100px">Status</th>
     <th class="sortable" onclick="setSort(&#39;date&#39;)" style="width:140px">Received ↓</th>
     <th style="width:130px">Date Resolved</th>
-  </tr></thead><tbody><tr><td colspan="12" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr></tbody></table></div></div>
+  </tr></thead><tbody><tr><td colspan="13" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr></tbody></table></div></div>
 </div>
- 
+
 <!-- ── Webhook Panel ──────────────────────────────────────── -->
 <div class="modal-wrap" id="webhookPanel">
   <div class="modal" style="width:600px;max-width:96vw;max-height:90vh;overflow-y:auto">
@@ -543,11 +544,11 @@ kbd {
     </div>
   </div>
 </div>
- 
+
 <!-- ── Overlay + Side Panel ───────────────────────────────── -->
 <div class="overlay" id="overlay" onclick="closePanel()"></div>
 <div class="side-panel" id="sidePanel"><div class="sp-stripe"></div></div>
- 
+
 <!-- ── Modals ─────────────────────────────────────────────── -->
 <div class="modal-wrap" id="assignModal">
   <div class="modal">
@@ -581,7 +582,7 @@ kbd {
     </div>
   </div>
 </div>
- 
+
 <script>
 // ═══════════════════════════════════════════════════════════
 //  DATA & STATE
@@ -596,14 +597,14 @@ let queueSel        = new Set();
 let inboxSel        = new Set();   // ← NEW: bulk select for inbox
 let sortCol         = "date";
 let sortDir         = -1;
- 
+
 // ═══════════════════════════════════════════════════════════
 //  HELPERS
 // ═══════════════════════════════════════════════════════════
 const esc   = s => { const d=document.createElement("div"); d.textContent=String(s||""); return d.innerHTML; };
 const role  = () => document.getElementById("roleSelect").value;
 const isDry = () => true; // Sync-back disabled — no writes to Portal Support Emails table
- 
+
 function fmtDate(d) {
   if (!d) return "\u2014";
   const dt = new Date(d);
@@ -620,16 +621,16 @@ function fmtDate(d) {
   if (rel) return `<span title="${full}">${full}<br><span style="font-size:10px;color:var(--t3)">${rel}</span></span>`;
   return full;
 }
- 
+
 function triageStatusOf(email) { return email.triageStatus || "unread"; }
- 
+
 function autoPriority(sender) {
   const s = (sender || "").toLowerCase();
   if (s.includes("creditriskmonitor.com")) return "Low";
   if (s === "portalsupport@supplychainmonitor.com") return "Low";
   return "High";
 }
- 
+
 function pill(ts) {
   if (ts === 'resolved') return `<span class="pill pill-resolved"><span class="pill-dot"></span>RESOLVED</span>`;
   if (ts === 'open')     return `<span class="pill pill-open"><span class="pill-dot"></span>OPEN</span>`;
@@ -645,7 +646,7 @@ function convChip(c) {
   const short = c.length > 16 ? c.slice(0,8) + '…' + c.slice(-6) : c;
   return `<span class="conv-chip" title="${esc(c)}">${esc(short)}</span>`;
 }
- 
+
 function rcptChips(toAddrs, ccAddrs) {
   const to = toAddrs || [], cc = ccAddrs || [];
   if (!to.length && !cc.length) return `<span style="color:var(--t3);font-size:11px">—</span>`;
@@ -654,22 +655,22 @@ function rcptChips(toAddrs, ccAddrs) {
   cc.forEach(a => { html += `<span class="cc-chip" title="${esc(a)}">CC: ${esc(a)}</span>`; });
   return html + `</div>`;
 }
- 
+
 function dateResolved(e) {
   const entry = (e.audit_log||[]).slice().reverse().find(l => l.action && l.action.toLowerCase().includes("resolve"));
   return entry ? fmtDate(entry.timestamp) : `<span style="color:var(--t3)">—</span>`;
 }
- 
+
 function attachIcon() {
   return `<svg class="attach-ico" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>`;
 }
- 
+
 function toast(msg, type="success") {
   const c=document.getElementById("toasts"), t=document.createElement("div");
   t.className=`toast t-${type}`; t.textContent=msg; c.appendChild(t);
   setTimeout(()=>{ t.style.opacity="0"; setTimeout(()=>t.remove(),300); }, 3200);
 }
- 
+
 function updateEmail(msgId, patches, action, note) {
   emails = emails.map(e => {
     if (e.message_id!==msgId) return e;
@@ -679,16 +680,16 @@ function updateEmail(msgId, patches, action, note) {
   });
   if (selected?.message_id===msgId) { selected = emails.find(e=>e.message_id===msgId); renderPanel(); }
   render();
- 
+
   // Persist to localStorage so changes survive page refresh
   saveEmailsToLocal();
- 
+
   // Sync changes to Supabase when Sync to Supabase is enabled
   if (Object.keys(patches).length > 0) {
     syncToSupabase(msgId, patches);
   }
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  SYNC TO SUPABASE (disabled — no writes back to Portal Support Emails)
 //  Re-enable in the future by removing the early return below
@@ -696,10 +697,10 @@ function updateEmail(msgId, patches, action, note) {
 async function syncToSupabase(messageId, patches) {
   return; // Sync-back disabled — dashboard is read-only against Portal Support Emails
 }
- 
+
 // Legacy wrapper kept for any remaining references
 function callWebhook(ep, payload) { }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  FILTERING / SORTING
 // ═══════════════════════════════════════════════════════════
@@ -719,7 +720,7 @@ function filtered() {
   });
   return data;
 }
- 
+
 function toggleTF(ts) {
   const i = triageFilters.indexOf(ts);
   if (i>=0) triageFilters.splice(i,1); else triageFilters.push(ts);
@@ -728,7 +729,7 @@ function toggleTF(ts) {
   document.getElementById("pfResolved").className = "pf-btn" + (triageFilters.includes("resolved") ? " pf-resolved" : "");
   render();
 }
- 
+
 function togglePF(p) {
   const i = priorityFilters.indexOf(p);
   if (i>=0) priorityFilters.splice(i,1); else priorityFilters.push(p);
@@ -736,10 +737,10 @@ function togglePF(p) {
   document.getElementById("pfLow").className    = "pf-btn" + (priorityFilters.includes("Low")    ? " pf-low"    : "");
   render();
 }
- 
+
 function setSort(col) { sortDir = (sortCol===col) ? -sortDir : -1; sortCol = col; render(); }
 function sa(col) { return sortCol===col?(sortDir===-1?" ↓":" ↑"):""; }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  VIEW ROUTING
 // ═══════════════════════════════════════════════════════════
@@ -749,7 +750,7 @@ function switchView(v) {
   inboxSel.clear(); updateBulkBar();
   render();
 }
- 
+
 function render() {
   const data = filtered();
   document.getElementById("tbarInfo").innerHTML=
@@ -761,7 +762,7 @@ function render() {
   else if (view==="queue")     renderQueue(mc);
   else if (view==="analytics") renderAnalytics(mc);
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  BULK SELECT / DELETE (INBOX)
 // ═══════════════════════════════════════════════════════════
@@ -775,7 +776,7 @@ function toggleInboxCheck(msgId) {
   const allCb = document.getElementById('inboxSelectAll');
   if (allCb) allCb.checked = inboxSel.size > 0 && inboxSel.size === document.querySelectorAll('.inbox-cb').length;
 }
- 
+
 function toggleInboxSelectAll() {
   const cbs = document.querySelectorAll('.inbox-cb');
   const allChecked = inboxSel.size === cbs.length && cbs.length > 0;
@@ -787,7 +788,7 @@ function toggleInboxSelectAll() {
   cbs.forEach(cb => cb.checked = inboxSel.has(cb.dataset.id));
   updateBulkBar();
 }
- 
+
 function updateBulkBar() {
   const bar = document.getElementById('bulkBar');
   const cnt = document.getElementById('bulkCount');
@@ -798,7 +799,7 @@ function updateBulkBar() {
     bar.classList.remove('on');
   }
 }
- 
+
 function bulkDelete() {
   if (!inboxSel.size) return;
   if (!confirm(`Remove ${inboxSel.size} selected email${inboxSel.size>1?'s':''} from your dashboard? This won't affect Supabase.`)) return;
@@ -811,7 +812,7 @@ function bulkDelete() {
   toast(`${count} email${count>1?'s':''} removed from your dashboard`);
   render();
 }
- 
+
 function clearSelection() {
   inboxSel.clear();
   updateBulkBar();
@@ -819,18 +820,19 @@ function clearSelection() {
   const allCb = document.getElementById('inboxSelectAll');
   if (allCb) allCb.checked = false;
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  INBOX VIEW
 // ═══════════════════════════════════════════════════════════
 function renderInbox(mc, data) {
   const threadMap={};
   emails.forEach(e=>{ threadMap[e.conversation_id]=(threadMap[e.conversation_id]||0)+1; });
- 
+
   const isViewer = role()==="Viewer";
   let html=`<div class="tbl-wrap"><table class="tbl"><thead><tr>
     ${!isViewer?`<th style="width:36px;text-align:center"><input type="checkbox" class="chk" id="inboxSelectAll" onclick="toggleInboxSelectAll()"></th>`:""}
     <th style="width:90px;max-width:90px">Message ID</th>
+    <th style="width:70px">Priority</th>
     <th style="width:100px">Conversation ID</th>
     <th class="sortable" onclick="setSort('sender')" style="width:160px">Sender${sa('sender')}</th>
     <th style="width:180px">Recipients (To + CC)</th>
@@ -842,11 +844,11 @@ function renderInbox(mc, data) {
     <th class="sortable" onclick="setSort('date')" style="width:140px">Received${sa('date')}</th>
     <th style="width:130px">Date Resolved</th>
   </tr></thead><tbody>`;
- 
+
   if (!data.length) {
-    html+=`<tr><td colspan="${isViewer?11:12}" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr>`;
+    html+=`<tr><td colspan="${isViewer?12:13}" style="text-align:center;padding:40px;color:var(--t3)">No emails match the current filters</td></tr>`;
   }
- 
+
   data.forEach(e=>{
     const tc = threadMap[e.conversation_id]||1;
     const checked = inboxSel.has(e.message_id) ? 'checked' : '';
@@ -857,6 +859,7 @@ function renderInbox(mc, data) {
           onclick="toggleInboxCheck('${esc(e.message_id)}')">
       </td>`:""}
       <td style="max-width:90px;font-family:var(--mono);font-size:10px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(e.message_id)}">${esc(e.message_id)}</td>
+      <td>${priorityPill(e.priority||'Low')}</td>
       <td class="col-conv">
         ${convChip(e.conversation_id)}
         ${tc>1?`<div style="margin-top:2px"><span class="thread-count" title="${tc} messages">${tc}</span> <span style="font-size:10px;color:var(--t2)">msgs</span></div>`:""}
@@ -868,9 +871,7 @@ function renderInbox(mc, data) {
       <td class="subj-cell">
         <div class="subj-text">
           ${esc(e.subject)}
- 
         </div>
-        <div style="margin-top:3px">${priorityPill(e.priority||'Low')}</div>
       </td>
       <td style="min-width:200px"><div class="body-text">${esc(e.full_body||e.body_preview||"")}</div></td>
       <td style="text-align:center" onclick="event.stopPropagation()">
@@ -888,7 +889,7 @@ function renderInbox(mc, data) {
   html+="</tbody></table></div>";
   mc.innerHTML=html;
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  THREADS VIEW
 // ═══════════════════════════════════════════════════════════
@@ -901,7 +902,7 @@ function renderThreads(mc, data) {
     const lb=Math.max(...b[1].map(e=>new Date(e.received_date_time)));
     return lb-la;
   });
- 
+
   let html=`<table class="tbl" style="table-layout:fixed"><thead><tr>
     <th style="width:24px"></th>
     <th style="width:120px">Triage Status</th>
@@ -913,7 +914,7 @@ function renderThreads(mc, data) {
     <th style="width:90px">Latest</th>
     <th style="width:84px">Status</th>
   </tr></thead><tbody>`;
- 
+
   sorted.forEach(([convId, msgs])=>{
     const allFrom= [...new Set(msgs.map(e=>e.sender))];
     const allTo  = [...new Set(msgs.flatMap(e=>(e.to||[])))];
@@ -922,7 +923,7 @@ function renderThreads(mc, data) {
     const unread = msgs.some(e=>triageStatusOf(e)==="unread");
     const tsOrder = {unread:0,open:1,resolved:2};
     const convStatus = msgs.reduce((best,e)=>tsOrder[triageStatusOf(e)]<tsOrder[best]?triageStatusOf(e):best, triageStatusOf(msgs[0]));
- 
+
     html+=`<tr class="thread-group${unread?" tg-unread":""}" onclick="toggleThread('${esc(convId)}')">
       <td style="text-align:center;padding:0 6px">
         <svg class="tg-arr" id="arr-${esc(convId)}" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -964,7 +965,7 @@ function renderThreads(mc, data) {
   html+="</tbody></table>";
   mc.innerHTML=html;
 }
- 
+
 function toggleThread(convId) {
   const row=document.getElementById(`tm-${convId}`);
   const arr=document.getElementById(`arr-${convId}`);
@@ -975,7 +976,7 @@ function toggleThread(convId) {
   div?.classList.toggle("open",!open);
   arr?.classList.toggle("open",!open);
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  KANBAN VIEW
 // ═══════════════════════════════════════════════════════════
@@ -984,7 +985,7 @@ function renderKanban(mc, data) {
   data.forEach(e=>{ const ts=triageStatusOf(e); if(groups[ts])groups[ts].push(e); });
   const priOrder={High:0,Medium:1,Low:2};
   Object.values(groups).forEach(g=>g.sort((a,b)=>(priOrder[a.priority||"Medium"]??1)-(priOrder[b.priority||"Medium"]??1)));
- 
+
   let html='<div class="kanban-wrap">';
   ["unread","open","resolved"].forEach(ts=>{
     html+=`<div class="k-col k-${ts}" id="kc-${ts}"
@@ -1018,7 +1019,7 @@ function renderKanban(mc, data) {
   html+="</div>";
   mc.innerHTML=html;
 }
- 
+
 function kanbanDrop(event, newTriageStatus) {
   event.preventDefault();
   const msgId=event.dataTransfer.getData("text");
@@ -1026,7 +1027,7 @@ function kanbanDrop(event, newTriageStatus) {
   updateEmail(msgId, {triageStatus:newTriageStatus}, "kanban_drag", `Moved to ${newTriageStatus}`);
   toast(`Status → ${newTriageStatus==="resolved"?"Resolved":newTriageStatus==="open"?"Open":"Unread"}`);
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  WORK QUEUE VIEW
 // ═══════════════════════════════════════════════════════════
@@ -1037,7 +1038,7 @@ function renderQueue(mc) {
   const openCnt=emails.filter(e=>triageStatusOf(e)==="open").length;
   const resolvedCnt=emails.filter(e=>triageStatusOf(e)==="resolved").length;
   queueSel=new Set();
- 
+
   let html=`<div class="q-stats">
     <div class="q-stat" style="border-top-color:#334155"><div class="q-stat-val" style="color:#334155">${unreadCnt}</div><div class="q-stat-label">Unread</div></div>
     <div class="q-stat" style="border-top-color:var(--amber)"><div class="q-stat-val" style="color:var(--amber)">${openCnt}</div><div class="q-stat-label">Open</div></div>
@@ -1055,7 +1056,7 @@ function renderQueue(mc) {
     <th style="width:90px">Status</th>
     <th style="min-width:160px">Suggested Action</th>
   </tr></thead><tbody>`;
- 
+
   q.forEach(e=>{
     html+=`<tr onclick="openDetail('${esc(e.message_id)}')">
       <td onclick="event.stopPropagation()"><input type="checkbox" class="chk q-cb" data-id="${esc(e.message_id)}" onchange="updateQSel()"></td>
@@ -1078,7 +1079,7 @@ function renderQueue(mc) {
   html+="</tbody></table></div>";
   mc.innerHTML=html;
 }
- 
+
 function qSelectAll(n) {
   const c=document.getElementById("qAll").checked;
   document.querySelectorAll(".q-cb").forEach(x=>x.checked=c);
@@ -1099,7 +1100,7 @@ function bulkAction(a) {
   });
   toast(`Bulk ${a}: ${queueSel.size} items`);
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  ANALYTICS VIEW
 // ═══════════════════════════════════════════════════════════
@@ -1111,12 +1112,12 @@ function renderAnalytics(mc) {
   const new24=emails.filter(e=>triageStatusOf(e)==="unread"&&(now-new Date(e.received_date_time))<86400000).length;
   const aging=emails.filter(e=>triageStatusOf(e)==="unread"&&(now-new Date(e.received_date_time))>86400000).length;
   const convCount=new Set(emails.map(e=>e.conversation_id)).size;
- 
+
   const days={};
   for(let i=29;i>=0;i--){const d=new Date(now-i*86400000).toISOString().split("T")[0];days[d]=0;}
   emails.filter(e=>triageStatusOf(e)==="unread").forEach(e=>{const k=new Date(e.received_date_time).toISOString().split("T")[0];if(days[k]!==undefined)days[k]++;});
   const maxC=Math.max(1,...Object.values(days));
- 
+
   let html=`<div class="an-grid">
     <div class="an-kpi" style="border-top-color:#334155"><div class="an-val" style="color:#334155">${unreadCnt}</div><div class="an-label">Unread</div></div>
     <div class="an-kpi" style="border-top-color:var(--amber)"><div class="an-val" style="color:var(--amber)">${openCnt}</div><div class="an-label">Open</div></div>
@@ -1135,7 +1136,7 @@ function renderAnalytics(mc) {
   html+=`</div><div class="chart-labels"><span>${Object.keys(days)[0]}</span><span>Today</span></div></div>`;
   mc.innerHTML=html;
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  DETAIL SIDE PANEL
 // ═══════════════════════════════════════════════════════════
@@ -1150,20 +1151,20 @@ function openDetail(msgId) {
   document.getElementById("overlay").classList.add("on");
   document.getElementById("sidePanel").classList.add("open");
 }
- 
+
 function closePanel() {
   document.getElementById("overlay").classList.remove("on");
   document.getElementById("sidePanel").classList.remove("open");
   selected=null; render();
 }
- 
+
 function renderPanel() {
   const e=selected; if(!e) return;
   const r=role();
   const audits=(e.audit_log||[]).slice(-8).reverse();
   const convMsgs=emails.filter(m=>m.conversation_id===e.conversation_id)
                        .sort((a,b)=>new Date(a.received_date_time)-new Date(b.received_date_time));
- 
+
   const panelEl=document.getElementById("sidePanel");
   panelEl.innerHTML=`
     <div class="sp-stripe"></div>
@@ -1173,7 +1174,7 @@ function renderPanel() {
         <div class="sp-meta-row">
           ${pill(triageStatusOf(e))}
           ${convChip(e.conversation_id)}
- 
+
         </div>
       </div>
       <button class="sp-close" onclick="closePanel()">
@@ -1216,17 +1217,17 @@ function renderPanel() {
         <span class="meta-k">Outlook</span>
         <span class="meta-v">${e.web_link && e.web_link !== '#' ? `<a href="${esc(e.web_link)}" target="_blank">Open in Outlook ↗</a>` : `<span style="color:var(--t3)">No link available</span>`}</span>
       </div>
- 
+
       <div class="callout">
         <div class="callout-label">Suggested Action</div>
         <div class="callout-text">${esc(e.suggested_action)}</div>
       </div>
- 
+
       <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px">${chips(e.tags)}</div>
- 
+
       <div class="sp-sec-title">Email Body</div>
       <div class="email-body">${esc(e.full_body||e.body_preview)}</div>
- 
+
       <div class="sp-actions">
         ${r!=="Viewer"?`<button class="btn btn-amber btn-sm" onclick="openPriModal()">Set Status</button>`:""}
         ${r!=="Viewer"?`<button class="btn btn-ghost btn-sm" onclick="doMoveTag()">Move/Tag</button>`:""}
@@ -1234,7 +1235,7 @@ function renderPanel() {
         <button class="btn btn-ghost btn-sm" onclick="doRerun()">Re-classify</button>
         ${r!=="Viewer"?`<button class="btn btn-sm" style="background:var(--red-dim);color:var(--red);border:1px solid rgba(192,0,0,.2)" onclick="deleteEmail('${esc(e.message_id)}')">Delete</button>`:""}
       </div>
- 
+
       ${convMsgs.length>1?`
       <div class="sp-sec-title">Thread — ${convMsgs.length} messages in ${esc(e.conversation_id)}</div>
       ${convMsgs.map((m,i)=>{
@@ -1251,7 +1252,7 @@ function renderPanel() {
           <div class="thread-rcpt">↓ ${esc(mTo.slice(0,3).join(", "))+(mTo.length>3?` +${mTo.length-3}` : "")}</div>
         </div>`;
       }).join("")}`:""}
- 
+
       <div class="sp-sec-title">Audit Log</div>
       ${!audits.length?`<div style="font-size:11px;color:var(--t3)">No events yet</div>`:""}
       ${audits.map(a=>`
@@ -1262,7 +1263,7 @@ function renderPanel() {
           </div>
           <div class="audit-detail">by ${esc(a.user)}${a.note?" — "+esc(a.note):""}</div>
         </div>`).join("")}
- 
+
       ${r!=="Viewer"?`
       <div class="sp-save-form">
         <div class="sp-sec-title" style="margin-top:0">Save Changes</div>
@@ -1292,7 +1293,7 @@ function renderPanel() {
       </div>`:""}
     </div>`;
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  ACTIONS
 // ═══════════════════════════════════════════════════════════
@@ -1310,7 +1311,7 @@ function confirmAssign() {
   toast(`Assigned to ${target||"(unassigned)"}`);
   closeModal("assignModal");
 }
- 
+
 function openPriModal() {
   if(!selected) return;
   triageTarget=triageStatusOf(selected);
@@ -1335,7 +1336,7 @@ function confirmPriority() {
   toast(`Status → ${triageTarget==="resolved"?"Resolved":triageTarget==="open"?"Open":"Unread"}`);
   closeModal("priorityModal");
 }
- 
+
 function doMoveTag() {
   if(!selected) return;
   updateEmail(selected.message_id,{},"move_tag","Tagged for follow-up");
@@ -1361,7 +1362,7 @@ function deleteEmail(msgId) {
   toast("Email removed from your dashboard");
   render();
 }
- 
+
 function doRerun() {
   if(!selected) return;
   const ts = triageStatusOf(selected);
@@ -1373,7 +1374,7 @@ function setPriority(msgId, val) {
   updateEmail(msgId, {priority: val}, 'set_priority', `Priority → ${val}`);
   toast(`Priority → ${val}`);
 }
- 
+
 function savePanelChanges(msgId, btn) {
   const priority     = document.getElementById('sp-pri-sel')?.value;
   const triageStatus = document.getElementById('sp-status-sel')?.value;
@@ -1389,7 +1390,7 @@ function savePanelChanges(msgId, btn) {
   btn.classList.add('saved');
   setTimeout(() => { btn.textContent = 'Save'; btn.classList.remove('saved'); }, 1800);
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  EDITABLE ASSIGNEE
 // ═══════════════════════════════════════════════════════════
@@ -1422,16 +1423,16 @@ function saveAssignee(msgId, val) {
   if (!email || email.assigned_to===trimmed) { render(); if(selected?.message_id===msgId) renderPanel(); return; }
   updateEmail(msgId, {assigned_to:trimmed}, 'assign', `Assigned to: ${trimmed||"(unassigned)"}`);
 }
- 
+
 function toggleSenderExpand(el, ev) {
   ev.stopPropagation();
   el.classList.toggle('expanded');
   const chev = el.querySelector('.from-chevron');
   if (chev) chev.textContent = el.classList.contains('expanded') ? ' ▲' : ' ▼';
 }
- 
+
 function closeModal(id) { document.getElementById(id).classList.remove("on"); }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  RESIZABLE TABLE COLUMNS (click-and-drag on column borders)
 // ═══════════════════════════════════════════════════════════
@@ -1439,13 +1440,13 @@ function initColumnResize() {
   document.querySelectorAll('.tbl th').forEach(th => {
     // Skip if already has a resize handle
     if (th.querySelector('.col-resize')) return;
- 
+
     const handle = document.createElement('div');
     handle.className = 'col-resize';
     th.appendChild(handle);
- 
+
     let startX, startW;
- 
+
     handle.addEventListener('mousedown', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -1454,7 +1455,7 @@ function initColumnResize() {
       handle.classList.add('dragging');
       document.body.style.cursor = 'col-resize';
       document.body.style.userSelect = 'none';
- 
+
       const onMove = (ev) => {
         const diff = ev.pageX - startX;
         const newW = Math.max(40, startW + diff);
@@ -1462,7 +1463,7 @@ function initColumnResize() {
         th.style.minWidth = newW + 'px';
         th.style.maxWidth = newW + 'px';
       };
- 
+
       const onUp = () => {
         handle.classList.remove('dragging');
         document.body.style.cursor = '';
@@ -1470,20 +1471,20 @@ function initColumnResize() {
         document.removeEventListener('mousemove', onMove);
         document.removeEventListener('mouseup', onUp);
       };
- 
+
       document.addEventListener('mousemove', onMove);
       document.addEventListener('mouseup', onUp);
     });
   });
 }
- 
+
 // Re-attach resize handles after every render
 const _origRender = render;
 render = function() {
   _origRender();
   requestAnimationFrame(initColumnResize);
 };
- 
+
 // ═══════════════════════════════════════════════════════════
 //  KEYBOARD SHORTCUTS
 // ═══════════════════════════════════════════════════════════
@@ -1495,7 +1496,7 @@ document.addEventListener("keydown", ev=>{
   if(ev.key==="q"){ ev.preventDefault(); switchView("queue"); }
   if(ev.key==="Escape"){ closePanel(); closeModal("assignModal"); closeModal("priorityModal"); }
 });
- 
+
 // ═══════════════════════════════════════════════════════════
 //  WEBHOOK PANEL
 // ═══════════════════════════════════════════════════════════
@@ -1504,7 +1505,7 @@ function copyWhUrl() {
   const url = document.getElementById("whUrlBox").textContent.trim();
   navigator.clipboard.writeText(url).then(()=>toast("Webhook URL copied!","success"));
 }
- 
+
 function addTestEmail() {
   const sender  = document.getElementById("tSender").value.trim();
   const subject = document.getElementById("tSubject").value.trim();
@@ -1515,7 +1516,7 @@ function addTestEmail() {
   const convId     = document.getElementById("tConvId").value.trim() || `CONV-${Date.now()}`;
   const triageStatus = document.getElementById("tTriageStatus").value || "unread";
   const priority   = document.getElementById("tPriority").value || autoPriority(sender);
- 
+
   injectEmails([{
     message_id: `MSG-${Date.now()}`, conversation_id: convId, subject, sender,
     to: toVal ? toVal.split(",").map(s=>s.trim()).filter(Boolean) : [],
@@ -1529,7 +1530,7 @@ function addTestEmail() {
   ["tSender","tSubject","tTo","tCc","tBody","tConvId"].forEach(id=>document.getElementById(id).value="");
   closeModal("webhookPanel");
 }
- 
+
 function addSampleEmails() {
   const now = new Date(), ts = (minAgo) => new Date(now-minAgo*60000).toISOString();
   injectEmails([
@@ -1542,13 +1543,13 @@ function addSampleEmails() {
   ]);
   closeModal("webhookPanel");
 }
- 
+
 function normalizePriorityStr(p) {
   const s = String(p || '').toLowerCase().trim();
   if (s.includes('high'))   return 'High';
   return 'Low';
 }
- 
+
 function injectEmails(newEmails) {
   newEmails.forEach(e => {
     const idx = emails.findIndex(x=>x.message_id===e.message_id);
@@ -1557,7 +1558,7 @@ function injectEmails(newEmails) {
   render();
   toast(`${newEmails.length} email${newEmails.length>1?"s":""} added`, "success");
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  SUPABASE CONFIG
 // ═══════════════════════════════════════════════════════════
@@ -1566,20 +1567,20 @@ const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 const TABLE         = 'Portal Support Emails';
 const STATE_TABLE   = 'dashboard_user_state';
 const SHARED_USER   = '_shared_team_';  // Single shared state row for the whole team
- 
+
 // ═══════════════════════════════════════════════════════════
 //  SHARED TEAM STATE (stored in Supabase, shared across all users/devices)
 // ═══════════════════════════════════════════════════════════
 let teamSeenIds    = new Set();   // message_ids the team has already pulled
 let teamDeletedIds = new Set();   // message_ids the team has dismissed
- 
+
 // Active user name (optional — for audit log attribution)
 let currentUserId = '';
- 
+
 function getActiveUser() {
   return currentUserId || 'team';
 }
- 
+
 // Restore user selection from localStorage (just the name, for audit)
 function restoreUserSelection() {
   try {
@@ -1594,7 +1595,7 @@ function restoreUserSelection() {
   } catch {}
   return '';
 }
- 
+
 // User selection handler — just sets the name for audit, no data reload
 function onUserSwitch(userId) {
   currentUserId = userId;
@@ -1608,7 +1609,7 @@ function onUserSwitch(userId) {
     document.getElementById('userIndicator').title = 'No user selected — actions logged as "team"';
   }
 }
- 
+
 // Fetch the shared team state from Supabase
 async function fetchTeamState() {
   try {
@@ -1638,7 +1639,7 @@ async function fetchTeamState() {
     return { seen_ids: [], deleted_ids: [] };
   } catch (e) { console.error('Team state fetch error:', e); return { seen_ids: [], deleted_ids: [] }; }
 }
- 
+
 // Save the shared team state back to Supabase
 async function saveTeamState() {
   try {
@@ -1659,20 +1660,20 @@ async function saveTeamState() {
     });
   } catch (e) { console.error('Team state save error:', e); }
 }
- 
+
 // Debounced save — batches rapid changes into one write
 let _saveTimer = null;
 function saveTeamStateDebounced() {
   clearTimeout(_saveTimer);
   _saveTimer = setTimeout(saveTeamState, 2000);
 }
- 
+
 // Mark message_ids as seen (shared across all team members)
 function markAsSeen(messageIds) {
   messageIds.forEach(id => teamSeenIds.add(String(id).trim()));
   saveTeamStateDebounced();
 }
- 
+
 // Mark message_ids as deleted (shared — disappears for everyone)
 function markAsDeleted(messageIds) {
   messageIds.forEach(id => {
@@ -1682,14 +1683,14 @@ function markAsDeleted(messageIds) {
   });
   saveTeamStateDebounced();
 }
- 
+
 // localStorage cache of emails for instant page load
 function saveEmailsToLocal() {
   try {
     localStorage.setItem('crm_emails_shared', JSON.stringify(emails));
   } catch {}
 }
- 
+
 function loadEmailsFromLocal() {
   try {
     const raw = localStorage.getItem('crm_emails_shared');
@@ -1703,23 +1704,23 @@ function loadEmailsFromLocal() {
   } catch {}
   return false;
 }
- 
+
 // Reset: clear shared state and re-pull everything
 async function resetDashboard() {
   if (!confirm('This will clear the shared dashboard state and re-pull ALL emails from Supabase for the entire team.\n\nContinue?')) return;
- 
+
   teamSeenIds = new Set();
   teamDeletedIds = new Set();
   emails = [];
- 
+
   await saveTeamState();
   try { localStorage.removeItem('crm_emails_shared'); } catch {}
- 
+
   render();
   await fetchFromSupabase();
   toast('Dashboard reset — all emails re-pulled from Supabase', 'info');
 }
- 
+
 // ═══════════════════════════════════════════════════════════
 //  SUPABASE FETCH (shared: only pulls emails not already seen/deleted by team)
 // ═══════════════════════════════════════════════════════════
@@ -1732,10 +1733,10 @@ async function fetchFromSupabase() {
     if (!res.ok) { console.error('Supabase fetch error:', res.status, await res.text()); return; }
     const rows = await res.json();
     if (!Array.isArray(rows) || !rows.length) return;
- 
+
     // Currently loaded message IDs
     const loadedIds = new Set(emails.map(e => String(e.message_id || '').trim()).filter(Boolean));
- 
+
     // Deduplicate Supabase rows: keep only latest per message_id
     const latestRowByMessageId = new Map();
     for (const r of rows) {
@@ -1748,15 +1749,15 @@ async function fetchFromSupabase() {
         latestRowByMessageId.set(id, r);
       }
     }
- 
+
     // Filter: only emails the team has NEVER seen AND not deleted AND not already loaded
     const newRows = Array.from(latestRowByMessageId.values()).filter(r => {
       const id = String(r.message_id || '').trim();
       return id && !teamSeenIds.has(id) && !teamDeletedIds.has(id) && !loadedIds.has(id);
     });
- 
+
     if (!newRows.length) return;
- 
+
     const newEmails = newRows.map(r => ({
       message_id:         r.message_id,
       conversation_id:    r.conversation_id || '',
@@ -1779,21 +1780,21 @@ async function fetchFromSupabase() {
       web_link:           r.weblink || r['Link to Email'] || r.web_link || r.link_to_email || '#',
       last_updated:       r.created_at || new Date().toISOString()
     }));
- 
+
     // Mark as seen for the whole team
     markAsSeen(newEmails.map(e => e.message_id));
- 
+
     // Append to dashboard
     emails = [...emails, ...newEmails].sort(
       (a, b) => new Date(b.received_date_time) - new Date(a.received_date_time)
     );
- 
+
     saveEmailsToLocal();
     render();
     toast(`${newEmails.length} new email${newEmails.length > 1 ? 's' : ''} loaded`, 'info');
   } catch(e) { console.error('Supabase fetch error:', e); }
 }
- 
+
 // ── INIT ──────────────────────────────────────────────────
 // 1. Restore user name (for audit log only — doesn't gate anything)
 const savedUser = restoreUserSelection();
@@ -1805,30 +1806,30 @@ if (savedUser) {
   document.getElementById('userIndicator').style.background = 'var(--amber)';
   document.getElementById('userIndicator').title = 'No user selected — actions logged as "team"';
 }
- 
+
 // 2. Instant load from localStorage cache
 const hadCached = loadEmailsFromLocal();
 render();
- 
+
 // 3. Fetch shared team state from Supabase, then pull new emails
 (async () => {
   const state = await fetchTeamState();
   teamSeenIds = new Set(state.seen_ids.map(id => String(id).trim()));
   teamDeletedIds = new Set(state.deleted_ids.map(id => String(id).trim()));
- 
+
   // Remove any locally cached emails that the team has since deleted
   if (hadCached) {
     const before = emails.length;
     emails = emails.filter(e => !teamDeletedIds.has(String(e.message_id).trim()));
     if (emails.length !== before) render();
   }
- 
+
   // Fetch new emails
   await fetchFromSupabase();
 })();
- 
+
 // 4. Poll every 5 minutes
 setInterval(fetchFromSupabase, 300000);
 </script>
- 
+
 </body></html>
