@@ -1724,7 +1724,7 @@ async function resetDashboard() {
 // ═══════════════════════════════════════════════════════════
 //  SUPABASE FETCH (shared: only pulls emails not already seen/deleted by team)
 // ═══════════════════════════════════════════════════════════
-async function fetchFromSupabase() {
+async function fetchFromSupabase(fullPull = false) {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE)}?select=*&order=created_at.desc`,
@@ -1750,10 +1750,14 @@ async function fetchFromSupabase() {
       }
     }
 
-    // Filter: only emails the team has NEVER seen AND not deleted AND not already loaded
+    // Filter logic depends on whether this is a full pull or incremental
     const newRows = Array.from(latestRowByMessageId.values()).filter(r => {
       const id = String(r.message_id || '').trim();
-      return id && !teamSeenIds.has(id) && !teamDeletedIds.has(id) && !loadedIds.has(id);
+      if (!id) return false;
+      if (loadedIds.has(id)) return false;           // Already in dashboard
+      if (teamDeletedIds.has(id)) return false;       // Team deleted this — never show
+      if (!fullPull && teamSeenIds.has(id)) return false; // Incremental: skip already seen
+      return true;
     });
 
     if (!newRows.length) return;
@@ -1817,15 +1821,20 @@ render();
   teamSeenIds = new Set(state.seen_ids.map(id => String(id).trim()));
   teamDeletedIds = new Set(state.deleted_ids.map(id => String(id).trim()));
 
-  // Remove any locally cached emails that the team has since deleted
-  if (hadCached) {
+  // If localStorage had no cached emails, we need a full re-pull regardless of seen_ids
+  // This handles: new browser, cleared cache, different device, etc.
+  if (!hadCached || emails.length === 0) {
+    console.log('No cached emails — doing full pull from Supabase (ignoring seen_ids)');
+    await fetchFromSupabase(true); // true = full pull
+  } else {
+    // Remove any locally cached emails that the team has since deleted
     const before = emails.length;
     emails = emails.filter(e => !teamDeletedIds.has(String(e.message_id).trim()));
     if (emails.length !== before) render();
-  }
 
-  // Fetch new emails
-  await fetchFromSupabase();
+    // Fetch only new emails
+    await fetchFromSupabase(false);
+  }
 })();
 
 // 4. Poll every 5 minutes
