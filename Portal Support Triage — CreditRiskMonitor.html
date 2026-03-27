@@ -1724,7 +1724,7 @@ async function resetDashboard() {
 // ═══════════════════════════════════════════════════════════
 //  SUPABASE FETCH (shared: only pulls emails not already seen/deleted by team)
 // ═══════════════════════════════════════════════════════════
-async function fetchFromSupabase(fullPull = false) {
+async function fetchFromSupabase() {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/${encodeURIComponent(TABLE)}?select=*&order=created_at.desc`,
@@ -1750,14 +1750,10 @@ async function fetchFromSupabase(fullPull = false) {
       }
     }
 
-    // Filter logic depends on whether this is a full pull or incremental
+    // Filter: only emails the team has NEVER seen AND not deleted AND not already loaded
     const newRows = Array.from(latestRowByMessageId.values()).filter(r => {
       const id = String(r.message_id || '').trim();
-      if (!id) return false;
-      if (loadedIds.has(id)) return false;           // Already in dashboard
-      if (teamDeletedIds.has(id)) return false;       // Team deleted this — never show
-      if (!fullPull && teamSeenIds.has(id)) return false; // Incremental: skip already seen
-      return true;
+      return id && !teamSeenIds.has(id) && !teamDeletedIds.has(id) && !loadedIds.has(id);
     });
 
     if (!newRows.length) return;
@@ -1778,7 +1774,7 @@ async function fetchFromSupabase(fullPull = false) {
       assigned_to:        r.assigned_to || '',
       tags:               [],
       audit_log:          [],
-      received_date_time: r.created_at || new Date().toISOString(),
+      received_date_time: r.Received || r.received || r.created_at || new Date().toISOString(),
       has_attachments:    false,
       is_read:            r.triage_status !== 'unread',
       web_link:           r.weblink || r['Link to Email'] || r.web_link || r.link_to_email || '#',
@@ -1821,24 +1817,57 @@ render();
   teamSeenIds = new Set(state.seen_ids.map(id => String(id).trim()));
   teamDeletedIds = new Set(state.deleted_ids.map(id => String(id).trim()));
 
-  // If localStorage had no cached emails, we need a full re-pull regardless of seen_ids
-  // This handles: new browser, cleared cache, different device, etc.
-  if (!hadCached || emails.length === 0) {
-    console.log('No cached emails — doing full pull from Supabase (ignoring seen_ids)');
-    await fetchFromSupabase(true); // true = full pull
-  } else {
-    // Remove any locally cached emails that the team has since deleted
+  // Remove any locally cached emails that the team has since deleted
+  if (hadCached) {
     const before = emails.length;
     emails = emails.filter(e => !teamDeletedIds.has(String(e.message_id).trim()));
     if (emails.length !== before) render();
-
-    // Fetch only new emails
-    await fetchFromSupabase(false);
   }
+
+  // Fetch new emails
+  await fetchFromSupabase();
 })();
 
 // 4. Poll every 5 minutes
 setInterval(fetchFromSupabase, 300000);
 </script>
 
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body></html>
