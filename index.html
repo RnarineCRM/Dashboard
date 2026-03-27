@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- saved from url=(0073)file:///Z:/Portal%20Support%20Triage%20%E2%80%94%20CreditRiskMonitor.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -607,14 +606,16 @@ const esc   = s => { const d=document.createElement("div"); d.textContent=String
 const role  = () => document.getElementById("roleSelect").value;
 const isDry = () => true; // Sync-back disabled — no writes to Portal Support Emails table
 
-function fmtDate(d) {
+function fmtDate(d, displayStr) {
   if (!d) return "\u2014";
   const dt = new Date(d);
   if (isNaN(dt.getTime())) return "\u2014";
   const m = (Date.now() - dt.getTime()) / 60000;
-  const datePart = dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
-  const timePart = dt.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "UTC" });
-  const full = `${datePart}, ${timePart}`;
+  const full = displayStr || (() => {
+    const datePart = dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+    const timePart = dt.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "UTC" });
+    return `${datePart}, ${timePart}`;
+  })();
   let rel = "";
   if (m < 1) rel = "Just now";
   else if (m < 60) rel = `${Math.floor(m)}m ago`;
@@ -884,7 +885,7 @@ function renderInbox(mc, data) {
         <span class="assign-edit-ico">✏</span>
       </td>
       <td>${pill(triageStatusOf(e))}</td>
-      <td class="col-date">${fmtDate(e.received_date_time)}</td>
+      <td class="col-date">${fmtDate(e.received_date_time, e.received_display)}</td>
       <td class="col-date">${dateResolved(e)}</td>
     </tr>`;
   });
@@ -955,7 +956,7 @@ function renderThreads(mc, data) {
             <span class="tm-from">${esc(e.sender)}</span>
             ${toAll.length?`<span class="tm-to">→ ${esc(toAll.slice(0,3).join(", "))}${toAll.length>3?` +${toAll.length-3}`:""}</span>`:""}
             ${pill(triageStatusOf(e))}
-            <span class="tm-date">${fmtDate(e.received_date_time)}</span>
+            <span class="tm-date">${fmtDate(e.received_date_time, e.received_display)}</span>
           </div>
           <div class="tm-preview" style="font-weight:600">${esc(e.subject)}</div>
           <div class="tm-preview" style="color:var(--t2);margin-top:1px">${esc(e.body_preview)}</div>
@@ -1009,7 +1010,7 @@ function renderKanban(mc, data) {
         <div class="k-card-meta">
           ${priorityPill(e.priority||'Low')}
           ${convChip(e.conversation_id)}
-          <span style="font-size:10px;color:var(--t2)">${fmtDate(e.received_date_time)}</span>
+          <span style="font-size:10px;color:var(--t2)">${fmtDate(e.received_date_time, e.received_display)}</span>
         </div>
         <div class="k-card-foot">
           <span style="font-size:11px;color:var(--t2)">${esc(e.assigned_to||"Unassigned")}</span>
@@ -1069,7 +1070,7 @@ function renderQueue(mc) {
       <td class="col-from"><div class="from-main" title="${esc(e.sender)}">${esc(e.sender)}</div></td>
       <td>${rcptChips(e.to, e.cc)}</td>
       <td class="col-conv">${convChip(e.conversation_id)}</td>
-      <td class="col-date">${fmtDate(e.received_date_time)}</td>
+      <td class="col-date">${fmtDate(e.received_date_time, e.received_display)}</td>
       <td class="assign-cell" onclick="event.stopPropagation();startEditAssignee('${esc(e.message_id)}',this)">
         <span>${e.assigned_to ? esc(e.assigned_to) : `<span style="color:var(--t3)">—</span>`}</span>
         <span class="assign-edit-ico">✏</span>
@@ -1208,7 +1209,7 @@ function renderPanel() {
           ${(e.cc||[]).map(a=>`<span style="display:inline-block;margin:1px 4px 1px 0;padding:1px 6px;border-radius:3px;background:var(--elevated);color:var(--t1);border:1px solid var(--b0);font-size:11px">${esc(a)}</span>`).join("")}
         </span>`:""}
         <span class="meta-k">Received</span>
-        <span class="meta-v">${new Date(e.received_date_time).toLocaleString()}</span>
+        <span class="meta-v">${e.received_display || new Date(e.received_date_time).toLocaleString("en-US", { timeZone: "UTC" })}</span>
         <span class="meta-k">Conv ID</span>
         <span class="meta-v">${convChip(e.conversation_id)}</span>
         <span class="meta-k">Assigned</span>
@@ -1776,10 +1777,17 @@ async function fetchFromSupabase() {
       assigned_to:        r.assigned_to || '',
       tags:               [],
       audit_log:          [],
+      received_display:   r.Received || r.received || null,
       received_date_time: (() => {
         const raw = r.Received || r.received;
         if (raw) {
-          const cleaned = raw.replace(' at ', ' ');
+          const cleaned = raw.replace(' at ', ' ')
+            .replace(/\bEDT\b/g, '-0400')
+            .replace(/\bEST\b/g, '-0500')
+            .replace(/\bCDT\b/g, '-0500')
+            .replace(/\bCST\b/g, '-0600')
+            .replace(/\bPDT\b/g, '-0700')
+            .replace(/\bPST\b/g, '-0800');
           const parsed = new Date(cleaned);
           if (!isNaN(parsed.getTime())) return parsed.toISOString();
         }
