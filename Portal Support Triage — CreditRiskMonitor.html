@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- saved from url=(0073)file:///Z:/Portal%20Support%20Triage%20%E2%80%94%20CreditRiskMonitor.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,6 +10,7 @@
 
 /* ── CRM-Inspired Token System ───────────────────────────── */
 :root {
+  color-scheme: light;
   --bg:        #eef1f5;
   --surface:   #ffffff;
   --card:      #ffffff;
@@ -610,8 +612,8 @@ function fmtDate(d) {
   const dt = new Date(d);
   if (isNaN(dt.getTime())) return "\u2014";
   const m = (Date.now() - dt.getTime()) / 60000;
-  const datePart = dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  const timePart = dt.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  const datePart = dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+  const timePart = dt.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "UTC" });
   const full = `${datePart}, ${timePart}`;
   let rel = "";
   if (m < 1) rel = "Just now";
