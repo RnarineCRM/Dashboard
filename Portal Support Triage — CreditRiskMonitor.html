@@ -1774,7 +1774,15 @@ async function fetchFromSupabase() {
       assigned_to:        r.assigned_to || '',
       tags:               [],
       audit_log:          [],
-      received_date_time: r.Received || r.received || r.created_at || new Date().toISOString(),
+      received_date_time: (() => {
+        const raw = r.Received || r.received;
+        if (raw) {
+          const cleaned = raw.replace(' at ', ' ');
+          const parsed = new Date(cleaned);
+          if (!isNaN(parsed.getTime())) return parsed.toISOString();
+        }
+        return r.created_at || new Date().toISOString();
+      })(),
       has_attachments:    false,
       is_read:            r.triage_status !== 'unread',
       web_link:           r.weblink || r['Link to Email'] || r.web_link || r.link_to_email || '#',
