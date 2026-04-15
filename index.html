@@ -412,6 +412,90 @@ kbd {
 </style>
 <style type="text/css" id="operaUserStyle"></style></head>
 <body>
+
+<!-- ═══════════════════ PASSWORD GATE ═══════════════════ -->
+<style>
+  #auth-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #eef1f5; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  }
+  #auth-overlay .auth-box {
+    background: #ffffff; border-radius: 8px; padding: 40px;
+    text-align: center; min-width: 340px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.10);
+    border-top: 4px solid #c00000;
+  }
+  #auth-overlay .auth-title {
+    color: #1a1a1a; margin-bottom: 4px; font-size: 1.4rem; font-weight: 700;
+  }
+  #auth-overlay .auth-subtitle {
+    color: #777; margin-bottom: 24px; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  #auth-overlay input {
+    width: 100%; padding: 10px 14px; border: 1px solid #ccc; border-radius: 6px;
+    background: #fff; color: #1a1a1a; font-size: 1rem; outline: none;
+  }
+  #auth-overlay input:focus { border-color: #c00000; box-shadow: 0 0 0 2px rgba(192,0,0,.12); }
+  #auth-overlay button {
+    margin-top: 16px; width: 100%; padding: 10px; border: none; border-radius: 6px;
+    background: #c00000; color: #fff; font-size: 1rem; font-weight: 600; cursor: pointer;
+  }
+  #auth-overlay button:hover { background: #a00000; }
+  #auth-overlay .auth-error {
+    color: #c00000; margin-top: 12px; min-height: 1.2em; font-size: .9rem;
+  }
+  body.auth-locked > *:not(#auth-overlay):not(script):not(style) { visibility: hidden; }
+</style>
+
+<div id="auth-overlay">
+  <div class="auth-box">
+    <div class="auth-title">Portal Support Triage</div>
+    <div class="auth-subtitle">CreditRiskMonitor</div>
+    <input type="password" id="auth-password" placeholder="Enter password" autocomplete="off" />
+    <button id="auth-submit">Login</button>
+    <div class="auth-error" id="auth-error"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var HASH = '10c24ed145d36c4c9175c3b08c3a7b24631e006bce0d71ac31c6fe4db33b8095';
+
+  if (sessionStorage.getItem('pst_auth') === 'ok') {
+    document.getElementById('auth-overlay').style.display = 'none';
+  } else {
+    document.body.classList.add('auth-locked');
+  }
+
+  function sha256(str) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)).then(function(buf) {
+      return Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2, '0'); }).join('');
+    });
+  }
+
+  function tryLogin() {
+    var pw = document.getElementById('auth-password').value;
+    sha256(pw).then(function(hash) {
+      if (hash === HASH) {
+        sessionStorage.setItem('pst_auth', 'ok');
+        document.getElementById('auth-overlay').style.display = 'none';
+        document.body.classList.remove('auth-locked');
+      } else {
+        document.getElementById('auth-error').textContent = 'Incorrect password';
+      }
+    });
+  }
+
+  document.getElementById('auth-submit').addEventListener('click', tryLogin);
+  document.getElementById('auth-password').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') tryLogin();
+  });
+})();
+</script>
+
 <div id="app">
   <div id="toasts"></div>
   <div class="top-stripe"></div>
